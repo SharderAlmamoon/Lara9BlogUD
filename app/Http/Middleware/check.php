@@ -16,7 +16,7 @@ class check
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->chickichicki <=20){
+        if($request->checkk < 20){
             return redirect()->route('about.contact');
         }
         return $next($request);
