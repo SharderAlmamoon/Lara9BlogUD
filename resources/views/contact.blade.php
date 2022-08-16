@@ -8,7 +8,16 @@
 </head>
 <body>
     <h2>THIS IS CONTACT PAGE With CONTROLLER</h2>
+    {{Auth::user()->name}}
+    <br><br>
     <!-- <a href="{{route('abouttttt.about')}}">About</a> -->
     <a href="{{url('/about')}}">About</a>
+                    <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">LOgOUT</a>
+                     </form>
+                    </li>
+
 </body>
 </html>
