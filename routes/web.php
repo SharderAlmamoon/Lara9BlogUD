@@ -25,7 +25,7 @@ Route::get('/', function () {
     //     echo "THIS IS CONTACT Page Here";
     // });
     Route::controller(DemoController::class)->group(function(){
-        Route::get('/about','index')->name('abouttttt.about');
+        Route::get('/about','index')->name('abouttttt.about')->middleware('check');
         Route::get('/contact','indexconTact')->name('about.contact');
     });
     
