@@ -25,7 +25,11 @@ Route::controller(DemoController::class)->group(function(){
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+return view('backend.adminDashboard');
 })->middleware(['auth','verified'])->name('dashboard');
+
+Route::get('/slide', function () {
+return view('backend.pages.slider.insertManager');
+})->middleware(['auth','verified'])->name('slider');
 
 require __DIR__.'/auth.php';
