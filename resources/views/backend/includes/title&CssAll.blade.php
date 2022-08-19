@@ -1,4 +1,4 @@
-<title>Bracket Plus Responsive Bootstrap 4 Admin Template</title>
+
     <link href="{{ asset('backend/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <link href="{{ asset('backend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link href="{{ asset('backend/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">

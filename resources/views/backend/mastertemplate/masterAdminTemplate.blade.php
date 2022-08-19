@@ -3,7 +3,7 @@
   <head>
     <!-- Required meta tags -->
     @include('backend.includes.metaTagAdmin')
-    
+    <title>AdminDashboard</title>
     
     <!-- vendor css -->
     
