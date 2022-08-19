@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Demo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class DemoController extends Controller
 {
@@ -23,4 +24,11 @@ class DemoController extends Controller
 
         return redirect('/login');
     }
+    // Admin editeprofile
+    public function editeprofile(){
+         $id = Auth::user()->id;
+         $adminuser = User::find($id);
+        return view('backend.pages.adminprofile.editprofile',compact('adminuser'));
+    }
+
 }
