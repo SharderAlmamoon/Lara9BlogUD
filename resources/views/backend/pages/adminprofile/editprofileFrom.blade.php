@@ -1,5 +1,6 @@
 @extends('backend.mastertemplate.masterAdminTemplate')
 @section('allbody')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div class="br-pagetitle">
         <i class="icon ion-ios-home-outline"></i>
         <div>
@@ -39,17 +40,28 @@
                           </div>
 
                           <div class="text-center mt-2">
-                            <img src="{{asset('backend/img/img11.jpg')}}" class="img-fluid rounded-circle mb-3 showimage" width="100" alt="ADMIN IMAGE" >
+                            <img id="showimage" src="{{asset('backend/img/img11.jpg')}}" class=" rounded avatar-lg" width="100" alt="ADMIN IMAGE" >
                         </div>
 
                         <button class="btn btn-sm btn-primary" type="submit">Updated Profile</button>
 
                        </form>
                     </div>
-                        
-                   
+                      
               </div><!-- card -->
             </div>
          </div>
       </div>
+      <script>
+         jQuery(document).ready(function(){
+          jQuery('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+              jQuery('#showimage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+            
+          });
+         });
+      </script>
 @endsection   
