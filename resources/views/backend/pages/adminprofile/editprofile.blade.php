@@ -22,7 +22,7 @@
                         <hr>
                         <h6>Admin Email &nbsp;&nbsp; ::&nbsp; &nbsp;<b>{{$adminuser->email}}</b></h6>
                         <hr>
-                        <a href="#" class="btn btn-sm btn-oblong btn-secondary btn-block mg-b-10">Edit Profile</a>
+                        <a href="{{route('editprofileFrom')}}" class="btn btn-sm btn-oblong btn-secondary btn-block mg-b-10">Edit Profile</a>
                     </div>
                         
                    

@@ -23,6 +23,7 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/contact','indexconTact')->name('about.contact');
     Route::get('/signout','signoutrouter')->name('signoutrouter');
     Route::get('/admin/editeprofile','editeprofile')->name('editeprofile');
+    Route::get('/admin/editprofileFrom','editprofileFrom')->name('editprofileFrom');
 });
 
 

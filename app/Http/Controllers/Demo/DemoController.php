@@ -30,5 +30,10 @@ class DemoController extends Controller
          $adminuser = User::find($id);
         return view('backend.pages.adminprofile.editprofile',compact('adminuser'));
     }
+    public function editprofileFrom(){
+         $id = Auth::user()->id;
+         $adminuseredit = User::find($id);
+        return view('backend.pages.adminprofile.editprofileFrom',compact('adminuseredit'));
+    }
 
 }
