@@ -36,4 +36,24 @@ class DemoController extends Controller
         return view('backend.pages.adminprofile.editprofileFrom',compact('adminuseredit'));
     }
 
+    public function updateprofilestore(Request $request){
+        // dd($updateUserProfile);
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required'
+        ]);
+
+        $id = Auth::user()->id;
+        $updateUserProfile = User::find($id);
+        $updateUserProfile->name = $request->name;
+        $updateUserProfile->username =$request->username;
+        $updateUserProfile->email =$request->email;
+
+        $updateUserProfile->update();
+        return redirect()->route('editeprofile');
+
+        
+    }
+
 }

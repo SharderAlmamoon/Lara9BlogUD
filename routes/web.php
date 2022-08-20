@@ -20,10 +20,11 @@ Route::get('/', function () {
 
 Route::controller(DemoController::class)->group(function(){
     Route::get('/about','index')->name('abouttttt.about')->middleware('check');
-    Route::get('/contact','indexconTact')->name('about.contact');
-    Route::get('/signout','signoutrouter')->name('signoutrouter');
-    Route::get('/admin/editeprofile','editeprofile')->name('editeprofile');
-    Route::get('/admin/editprofileFrom','editprofileFrom')->name('editprofileFrom');
+    Route::get('/contact','indexconTact')->middleware(['auth','verified'])->name('about.contact');
+    Route::get('/signout','signoutrouter')->middleware(['auth','verified'])->name('signoutrouter');
+    Route::get('/admin/editeprofile','editeprofile')->middleware(['auth','verified'])->name('editeprofile');
+    Route::get('/admin/editprofileFrom','editprofileFrom')->middleware(['auth','verified'])->name('editprofileFrom');
+    Route::post('/admin/updateprofile','updateprofilestore')->middleware(['auth','verified'])->name('updateprofile');
 });
 
 

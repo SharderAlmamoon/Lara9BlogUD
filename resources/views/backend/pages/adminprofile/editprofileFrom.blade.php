@@ -15,22 +15,31 @@
                 <div class="card bg-white">
 
                     <div class="ml-2 mt-3">
-                       <form action="" method="post" enctype="multipart/form-data">
-
+                       <form action="{{route('updateprofile')}}" method="post" enctype="multipart/form-data">
+                          @csrf
                         <!-- Admin Name -->
                         <div class="form-group">
                             <label for="name"><b>Admin Name</b></label>
                             <input type="text" class="form-control" id="name" value="{{$adminuseredit->name}}" name="name">
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                           </div>
                         <!-- Admin NAme -->
                           <div class="form-group">
                             <label for="username"> <b>Admin UserName</b></label>
                             <input type="text" class="form-control" id="username" value="{{$adminuseredit->username}}" name="username">
+                            @error('username')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                           </div>
                         <!-- Admin Email -->
                           <div class="form-group">
                             <label for="email"><b>Admin Email</b></label>
                             <input type="text" class="form-control" id="email" value="{{$adminuseredit->email}}" name="email">
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                           </div>
 
                         <!-- Admin Image -->
