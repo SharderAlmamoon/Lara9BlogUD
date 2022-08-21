@@ -45,11 +45,11 @@
                         <!-- Admin Image -->
                           <div class="form-group">
                             <label for=""><b>Admin Image</b></label>
-                            <input type="file" class="form-control" id="image" name="image">
+                            <input type="file" class="form-control" id="image" name="profile_image">
                           </div>
 
                           <div class="text-center mt-2">
-                            <img id="showimage" src="{{asset('backend/img/img11.jpg')}}" class=" rounded avatar-lg" width="100" alt="ADMIN IMAGE" >
+                            <img id="showimage" src="{{!empty($adminuseredit->profile_image) ? asset('backend/adminimage/'.$adminuseredit->profile_image) : asset('backend/'.'defaultimage.png')}}" class=" rounded avatar-lg" width="100" alt="ADMIN IMAGE" >
                         </div>
 
                         <button class="btn btn-sm btn-primary" type="submit">Updated Profile</button>

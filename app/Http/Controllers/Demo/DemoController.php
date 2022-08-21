@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use File;
+use Image;
 
 class DemoController extends Controller
 {
@@ -40,16 +42,28 @@ class DemoController extends Controller
         // dd($updateUserProfile);
         $request->validate([
             'name' => 'required',
-            'username' => 'required|unique:users',
+            'username' => 'required',
             'email' => 'required'
         ]);
 
         $id = Auth::user()->id;
         $updateUserProfile = User::find($id);
+        
         $updateUserProfile->name = $request->name;
         $updateUserProfile->username =$request->username;
         $updateUserProfile->email =$request->email;
-
+        
+        if($request->profile_image){
+              if(File::exists('backend/adminimage/'.$updateUserProfile->profile_image)){
+                File::delete('backend/adminimage/'.$updateUserProfile->profile_image);
+              }
+            $profileImage = $request->File('profile_image');
+            $profileImageCName = md5(time().rand(00000,99999)).'.'.$profileImage->getClientOriginalExtension();
+            $profileImagePath = public_path('backend/adminimage/'.$profileImageCName);
+            $updateUserProfile->profile_image =$profileImageCName;
+            Image::make($profileImage)->save($profileImagePath);
+        }
+        // dd($updateUserProfile);
         $updateUserProfile->update();
         return redirect()->route('editeprofile');
 

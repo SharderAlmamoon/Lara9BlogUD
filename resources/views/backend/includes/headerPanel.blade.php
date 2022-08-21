@@ -8,18 +8,25 @@
             <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
           </span>
         </div><!-- input-group -->
-      </div><!-- br-header-left -->
+      </div><!-- br-header-left -->     
+        @php
+              $id = Auth::user()->id;
+              $profileimgShow = App\Models\User::find($id);
+        @endphp
+
+
+
       <div class="br-header-right">
         <nav class="nav">
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name hidden-md-down"><b>{{Auth::user()->name}}</b></span>
-              <img src="https://via.placeholder.com/500" class="wd-32 rounded-circle" alt="">
+              <img src="{{!empty($profileimgShow->profile_image) ? asset('backend/adminimage/'.$profileimgShow->profile_image) : asset('backend/'.'defaultimage.png')}}" class="wd-32 rounded-circle" alt="">
               <span class="square-10 bg-success"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-250">
               <div class="tx-center">
-                <a href=""><img src="https://via.placeholder.com/500" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="{{!empty($profileimgShow->profile_image) ? asset('backend/adminimage/'.$profileimgShow->profile_image) : asset('backend/'.'defaultimage.png')}}" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">{{Auth::user()->name}}</h6>
                 <p>{{Auth::user()->email}}</p>
               </div>
