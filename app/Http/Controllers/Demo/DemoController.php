@@ -65,9 +65,7 @@ class DemoController extends Controller
         }
         // dd($updateUserProfile);
         $updateUserProfile->update();
-        return redirect()->route('editeprofile');
-
+        return redirect()->route('editeprofile')->with('message',"SUCCESSFULLY PROFILE UPDATED");
         
     }
-
 }
