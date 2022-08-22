@@ -24,7 +24,7 @@ class DemoController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('login')->with('warning','SUCCESSFULLY ADMIN LogOUT');
     }
     // Admin editeprofile
     public function editeprofile(){

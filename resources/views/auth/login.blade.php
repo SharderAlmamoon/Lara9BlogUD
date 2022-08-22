@@ -17,6 +17,8 @@
     <!-- vendor css -->
     <link href=" {{ asset('backend/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <link href=" {{ asset('backend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href=" {{ asset('backend/css/bracket.css')}}">
@@ -60,7 +62,7 @@
         </div><!-- login-wrapper -->
       </div><!-- overlay-body -->
     </div><!-- d-flex -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script href=" {{ asset('backend/lib/jquery/jquery.min.js')}}"></script>
     <script href=" {{ asset('backend/lib/jquery-ui/ui/widgets/datepicker.js')}}"></script>
     <script href=" {{ asset('backend/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -76,6 +78,43 @@
 
       });
     </script>
+     <script>
+      @if(Session::has('message'))
+      toastr.options =
+      {
+        "closeButton" : true,
+        "progressBar" : true
+      }
+          toastr.success("{{ session('message') }}");
+      @endif
+
+      @if(Session::has('error'))
+      toastr.options =
+      {
+        "closeButton" : true,
+        "progressBar" : true
+      }
+          toastr.error("{{ session('error') }}");
+      @endif
+
+      @if(Session::has('info'))
+      toastr.options =
+      {
+        "closeButton" : true,
+        "progressBar" : true
+      }
+          toastr.info("{{ session('info') }}");
+      @endif
+
+      @if(Session::has('warning'))
+      toastr.options =
+      {
+        "closeButton" : true,
+        "progressBar" : true
+      }
+          toastr.warning("{{ session('warning') }}");
+      @endif
+</script>
 
   </body>
 </html>
