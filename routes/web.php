@@ -25,6 +25,8 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/admin/editeprofile','editeprofile')->middleware(['auth','verified'])->name('editeprofile');
     Route::get('/admin/editprofileFrom','editprofileFrom')->middleware(['auth','verified'])->name('editprofileFrom');
     Route::post('/admin/updateprofile','updateprofilestore')->middleware(['auth','verified'])->name('updateprofile');
+    Route::get('/admin/changePAsswordviewPage','changePAsswordviewPage')->middleware(['auth','verified'])->name('changePAsswordviewPage');
+    Route::post('/admin/updateuserPasswordchange','updateuserPasswordchange')->middleware(['auth','verified'])->name('updateuserPasswordchange');
 });
 
 

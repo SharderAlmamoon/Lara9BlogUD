@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Demo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use File;
 use Image;
@@ -68,4 +69,37 @@ class DemoController extends Controller
         return redirect()->route('editeprofile')->with('message',"SUCCESSFULLY PROFILE UPDATED");
         
     }
+
+    // changePAsswordviewPage
+    public function changePAsswordviewPage(){
+        return view('backend.pages.adminprofile.changePAsswordviewPage');
+    } //End MEthod
+
+    // changePAsswordviewPage
+    public function updateuserPasswordchange(Request $request){
+
+        $request->validate([
+            'oldpassword' => 'required', 
+            'newpassword' => 'required|confirmed ', 
+        ]);
+
+        $hashpassword = Auth::user()->password;
+
+        if(Hash::check($request->oldpassword,$hashpassword)){
+            $user = User::find(Auth::id());
+            $user->password = bcrypt($request->newpassword);
+            $user->save();
+            
+            session()->flash('message','SUCESSFULLY PASSWORD CHANGED');
+            return redirect()->back();
+
+        }
+        else{
+            session()->flash('error','SOMETHING WRONG INPUT');
+            return redirect()->back();
+        }
+
+
+    } //End MEthod
+    
 }

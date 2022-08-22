@@ -53,7 +53,7 @@
 
              <!-- Password -->
             <div class="form-group">
-            <input id="password" type="password" name="password" value="{{old('password')}}" class="form-control" placeholder="Enter your Password"  required autocomplete="new-password">
+            <input id="password" type="password" name="password" class="form-control" placeholder="Enter your Password"  required autocomplete="new-password">
             </div><!-- form-group -->
 
              <!-- Confirm Password -->

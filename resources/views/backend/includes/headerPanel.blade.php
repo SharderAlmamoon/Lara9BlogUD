@@ -39,7 +39,7 @@
               <hr>
               <ul class="list-unstyled user-profile-nav">
                 <li><a href="{{route('editeprofile')}}"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
+                <li><a href="{{route('changePAsswordviewPage')}}"><i class="icon ion-ios-gear"></i>Change Password</a></li>
                 <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
                 <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
                 <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
