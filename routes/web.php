@@ -15,7 +15,7 @@ use App\Http\Controllers\Demo\DemoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.frontendDashboard');
 });
 
 Route::controller(DemoController::class)->group(function(){
@@ -28,7 +28,7 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/admin/changePAsswordviewPage','changePAsswordviewPage')->middleware(['auth','verified'])->name('changePAsswordviewPage');
     Route::post('/admin/updateuserPasswordchange','updateuserPasswordchange')->middleware(['auth','verified'])->name('updateuserPasswordchange');
 });
-
+// Frontend
 
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');
