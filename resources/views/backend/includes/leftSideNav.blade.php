@@ -16,8 +16,8 @@
             <span class="menu-item-label">Slider</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="card-dashboard.html" class="sub-link">sliderManage</a></li>
-            <li class="sub-item"><a href="{{route('slider')}}" class="sub-link">Add Slider</a></li>
+            <li class="sub-item"><a href="card-dashboard.html" class="sub-link">Manage slider</a></li>
+            <li class="sub-item"><a href="{{route('slider.add')}}" class="sub-link">Add Slider</a></li>
           </ul>
         </li>
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>

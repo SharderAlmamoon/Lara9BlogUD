@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
+use App\Http\Controllers\Demo\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,13 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/admin/changePAsswordviewPage','changePAsswordviewPage')->middleware(['auth','verified'])->name('changePAsswordviewPage');
     Route::post('/admin/updateuserPasswordchange','updateuserPasswordchange')->middleware(['auth','verified'])->name('updateuserPasswordchange');
 });
+
+    Route::group(['prefix'=>'/slider'],function(){
+        Route::get('/add',[SliderController::class,'index'])->middleware(['auth','verified'])->name('slider.add');
+        Route::get('/manage',[SliderController::class,'manage'])->middleware(['auth','verified'])->name('slider.manage');
+        Route::post('/insert',[SliderController::class,'store'])->middleware(['auth','verified'])->name('insert.slider');
+    });
+
 // Frontend
 
 Route::get('/dashboard', function () {

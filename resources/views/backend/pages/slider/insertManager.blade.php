@@ -3,45 +3,75 @@
 <div class="br-pagetitle">
         <i class="icon ion-ios-home-outline"></i>
         <div>
-          <h4>Slider</h4>
+          <h4>INSERT Slider</h4>
           <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
+        </div>
+        <div class="text-right">
+            <a href="{{route('dashboard')}}" class="btn btn-sm btn-success">Dashboard</a> /
+            <a href="{{route('slider.manage')}}" class="btn btn-sm btn-success">Slider Manage</a> 
         </div>
       </div>
 
       <div class="br-pagebody">
         <div class="row row-sm">
-        <div class="col-lg-8 offset-md-2">
-            <div class="card bd-0 shadow-base">
-                <div class="d-md-flex justify-content-between pd-25">
-                    <div>
-                    <h6 class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1">How Engaged Our Users Daily</h6>
-                    <p>Past 30 Days — Last Updated Oct 14, 2017</p>
-                    </div>
-                    <div class="d-sm-flex">
-                    <div>
-                        <p class="mg-b-5 tx-uppercase tx-10 tx-mont tx-semibold">Bounce Rate</p>
-                        <h4 class="tx-lato tx-inverse tx-bold mg-b-0">23.32%</h4>
-                        <span class="tx-12 tx-success tx-roboto">2.7% increased</span>
-                    </div>
-                    <div class="bd-sm-l pd-sm-l-20 mg-sm-l-20 mg-t-20 mg-sm-t-0">
-                        <p class="mg-b-5 tx-uppercase tx-10 tx-mont tx-semibold">Page Views</p>
-                        <h4 class="tx-lato tx-inverse tx-bold mg-b-0">38.20%</h4>
-                        <span class="tx-12 tx-danger tx-roboto">4.65% decreased</span>
-                    </div>
-                    <div class="bd-sm-l pd-sm-l-20 mg-sm-l-20 mg-t-20 mg-sm-t-0">
-                        <p class="mg-b-5 tx-uppercase tx-10 tx-mont tx-semibold">Time On Site</p>
-                        <h4 class="tx-lato tx-inverse tx-bold mg-b-0">12:30</h4>
-                        <span class="tx-12 tx-success tx-roboto">1.22% increased</span>
-                    </div>
-                    </div><!-- d-flex -->
-                </div><!-- d-flex -->
+        <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
 
-                <div class="pd-l-25 pd-r-15 pd-b-25">
-                    <div id="ch5" class="ht-250 ht-sm-300"></div>
-                </div>
-                </div>
-            </div><!-- col-3 -->    
-       </div>
+                    <div class="ml-2 mt-3">
+                        @if(count($errors))
+                         @foreach($errors->all() as $error)
+                             <p class="alert alert-danger">{{$error}}</p>
+                          @endforeach
+                        @endif
+                       <form action="{{route('insert.slider')}}" method="post" enctype="multipart/form-data">
+                          @csrf
+
+                        <!--slider_title -->
+                        <div class="form-group">
+                            <label for="slider_title"><b>Slider Title</b></label>
+                            <input type="text" class="form-control" id="slider_title" value="{{old('slider_title')}}" name="slider_title">
+                          </div>
+                        <!-- slider_shortdes -->
+                          <div class="form-group">
+                            <label for="slider_shortdes"> <b>Slider Shortdes</b></label>
+                            <input type="text" class="form-control" id="slider_shortdes" value="{{old('slider_shortdes')}}" name="slider_shortdes">
+                          </div>
+
+                        <!-- slider_url -->
+                          <div class="form-group">
+                            <label for="slider_url"> <b>Slider Url :</b></label>
+                            <input type="text" class="form-control" id="slider_url" value="{{old('slider_url')}}" name="slider_url">
+                          </div>
+        
+                        <!-- slider_image -->
+                          <div class="form-group">
+                            <label for=""><b>Slider Image</b></label>
+                            <input type="file" class="form-control" id="image" name="slider_image">
+                          </div>
+
+                          <div class="text-center mt-2">
+                            <img id="showimage" src="{{asset('backend/'.'defaultimage.png')}}" class=" rounded avatar-lg" width="100" alt="ADMIN IMAGE" >
+                        </div>
+
+                        <button class="btn btn-sm btn-primary" type="submit">Slider Inserted</button>
+
+                       </form>
+                    </div>
+                      
+              </div><!-- card -->
+            </div>
+         </div>
       </div>
-    </div>
-@endsection
+      <script>
+         jQuery(document).ready(function(){
+          jQuery('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+              jQuery('#showimage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+            
+          });
+         });
+      </script>
+@endsection   

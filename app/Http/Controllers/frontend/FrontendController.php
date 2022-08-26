@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\frontend\SliderBanner;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
