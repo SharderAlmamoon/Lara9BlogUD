@@ -75,7 +75,12 @@ class SliderController extends Controller
         return redirect()->route('slider.manage')->with('info','SUccessFully SLider UPdated');
     } //end Method
 
-    public function destroy(){
-
+    public function destroy($id){
+        $sliderDelete = SliderBanner::find($id);
+        if(File::exists('backend/sliderImage/'.$sliderDelete->slider_image)){
+            File::delete('backend/sliderImage/'.$sliderDelete->slider_image);
+        }
+        $sliderDelete->delete();
+        return redirect()->route('slider.manage')->with('warning','SuccessFully Slider Deleted');
     } //end Method
 }
