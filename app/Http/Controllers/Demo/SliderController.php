@@ -15,7 +15,8 @@ class SliderController extends Controller
     } //End MEthod;
 
     public function manage(){
-        return view('backend.pages.slider.manage');
+        $allSlider = SliderBanner::orderby('id','asc')->get();
+        return view('backend.pages.slider.manage',compact('allSlider'));
     } //End MEthod;
 
     public function store(Request $request){
@@ -38,8 +39,13 @@ class SliderController extends Controller
             $sliderinsert->slider_image = $sliderimageCName;
         }
         $sliderinsert->save();
-        return redirect()->route('slider.manage')->with('message','SUccessFully SLider Added');
+        return redirect()->route('slider.manage')->with('message','SUccessFully SLider Added'); 
+    }//end method
+    public function edit(){
 
-        
-    }
+    } //end Method
+
+    public function destroy(){
+
+    } //end Method
 }

@@ -16,7 +16,7 @@
             <span class="menu-item-label">Slider</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="card-dashboard.html" class="sub-link">Manage slider</a></li>
+            <li class="sub-item"><a href="{{route('slider.manage')}}" class="sub-link">Manage slider</a></li>
             <li class="sub-item"><a href="{{route('slider.add')}}" class="sub-link">Add Slider</a></li>
           </ul>
         </li>

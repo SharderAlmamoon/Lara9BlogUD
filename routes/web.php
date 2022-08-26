@@ -34,6 +34,8 @@ Route::controller(DemoController::class)->group(function(){
         Route::get('/add',[SliderController::class,'index'])->middleware(['auth','verified'])->name('slider.add');
         Route::get('/manage',[SliderController::class,'manage'])->middleware(['auth','verified'])->name('slider.manage');
         Route::post('/insert',[SliderController::class,'store'])->middleware(['auth','verified'])->name('insert.slider');
+        Route::get('/edit',[SliderController::class,'edit'])->middleware(['auth','verified'])->name('slider.editfrom');
+        Route::get('/delete',[SliderController::class,'destroy'])->middleware(['auth','verified'])->name('slider.delete');
     });
 
 // Frontend
