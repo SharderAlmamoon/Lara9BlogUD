@@ -48,6 +48,33 @@ class SliderController extends Controller
         return view('backend.pages.slider.editedSlider',compact('slider'));
     } //end Method
 
+    public function update(Request $request,$id){
+        $request->validate([
+            'slider_title' => 'required',
+            'slider_shortdes' => 'required',
+            'slider_image' => 'required',
+            'slider_url' => 'required',
+        ]);
+
+        $updateSlider = SliderBanner::find($id);
+        $updateSlider->slider_title = $request->slider_title; 
+        $updateSlider->slider_shortdes = $request->slider_shortdes; 
+        $updateSlider->slider_url = $request->slider_url; 
+
+        if($request->slider_image){
+            if(File::exists('backend/sliderImage/'.$updateSlider->slider_image)){
+                File::delete('backend/sliderImage/'.$updateSlider->slider_image);
+            }
+            $sliderImage = $request->File('slider_image');
+            $sliderimageCName = hexdec(uniqid()).'.'.$sliderImage->getClientOriginalExtension();
+            $sliderPath = public_path('backend/sliderImage/'.$sliderimageCName);
+            Image::make($sliderImage)->save( $sliderPath);
+            $updateSlider->slider_image = $sliderimageCName;
+        }
+        $updateSlider->update();
+        return redirect()->route('slider.manage')->with('info','SUccessFully SLider UPdated');
+    } //end Method
+
     public function destroy(){
 
     } //end Method
