@@ -15,6 +15,5 @@ class SliderBanner extends Model
     //     'slider_title',
     //     'slider_shortdes',
     //     'slider_image',
-    //     'slider_url',
     //  ];
 }

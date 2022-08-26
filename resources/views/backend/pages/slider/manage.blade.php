@@ -6,6 +6,10 @@
           <h4>MANAGE SLIDER</h4>
           <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
         </div>
+        <div class="text-right">
+            <a href="{{route('dashboard')}}" class="btn btn-sm btn-success">Dashboard</a> /
+            <a href="{{route('slider.add')}}" class="btn btn-sm btn-success">Slider Insert</a> 
+        </div>
       </div>
 
       <div class="br-pagebody">

@@ -41,8 +41,11 @@ class SliderController extends Controller
         $sliderinsert->save();
         return redirect()->route('slider.manage')->with('message','SUccessFully SLider Added'); 
     }//end method
-    public function edit(){
 
+    public function edit($id){
+        $id=\Crypt::decryptString($id);
+        $slider = SliderBanner::find($id);
+        return view('backend.pages.slider.editedSlider',compact('slider'));
     } //end Method
 
     public function destroy(){
