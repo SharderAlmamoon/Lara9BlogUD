@@ -20,6 +20,17 @@
             <li class="sub-item"><a href="{{route('slider.add')}}" class="sub-link">Add Slider</a></li>
           </ul>
         </li>
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <!-- <span class="menu-item-label">Cards &amp; Widgets</span> -->
+            <span class="menu-item-label">About</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item"><a href="{{route('about.manage')}}" class="sub-link">Manage About</a></li>
+            <li class="sub-item"><a href="{{route('about.add')}}" class="sub-link">ABout added</a></li>
+          </ul>
+        </li>
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
       </ul><!-- br-sideleft-menu -->
 

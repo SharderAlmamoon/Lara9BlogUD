@@ -14,10 +14,11 @@ use App\Http\Controllers\Demo\SliderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// FOR FRONTEND
 
-Route::get('/', function () {
-    return view('frontend.frontendDashboard');
-});
+Route::get('/','App\Http\Controllers\frontend\FrontendController@index');
+
+// for Backend
 
 Route::controller(DemoController::class)->group(function(){
     Route::get('/about','index')->name('abouttttt.about')->middleware('check');
@@ -37,6 +38,12 @@ Route::controller(DemoController::class)->group(function(){
         Route::get('/edit/{id}',[SliderController::class,'edit'])->middleware(['auth','verified'])->name('slider.editfrom');
         Route::get('/delete/{id}',[SliderController::class,'destroy'])->middleware(['auth','verified'])->name('slider.delete');
         Route::post('/update/{id}',[SliderController::class,'update'])->middleware(['auth','verified'])->name('update.slider');
+    });
+
+    Route::group(['prefix'=>'about'],function(){
+        Route::get('add','App\Http\Controllers\Backend\About@create')->middleware(['auth','verified'])->name('about.add');
+        Route::get('manage','App\Http\Controllers\Backend\About@index')->middleware(['auth','verified'])->name('about.manage');
+        Route::post('store','App\Http\Controllers\Backend\About@store')->middleware(['auth','verified'])->name('insert.about');
     });
 
 // Frontend

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\frontend\SliderBanner;
 use Illuminate\Http\Request;
 
-class FrontendController extends Controller
+class About extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $sliderFrontend = SliderBanner::orderby('id','asc')->get();
-        return view('frontend.frontendDashboard',compact('sliderFrontend'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class FrontendController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.about.insertAbout');
     }
 
     /**

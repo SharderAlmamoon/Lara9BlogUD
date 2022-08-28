@@ -35,7 +35,7 @@ class SliderController extends Controller
             $sliderImage = $request->File('slider_image');
             $sliderimageCName = hexdec(uniqid()).'.'.$sliderImage->getClientOriginalExtension();
             $sliderPath = public_path('backend/sliderImage/'.$sliderimageCName);
-            Image::make($sliderImage)->save( $sliderPath);
+            Image::make($sliderImage)->resize(636,852)->save( $sliderPath);
             $sliderinsert->slider_image = $sliderimageCName;
         }
         $sliderinsert->save();
@@ -52,7 +52,6 @@ class SliderController extends Controller
         $request->validate([
             'slider_title' => 'required',
             'slider_shortdes' => 'required',
-            'slider_image' => 'required',
             'slider_url' => 'required',
         ]);
 
@@ -68,7 +67,7 @@ class SliderController extends Controller
             $sliderImage = $request->File('slider_image');
             $sliderimageCName = hexdec(uniqid()).'.'.$sliderImage->getClientOriginalExtension();
             $sliderPath = public_path('backend/sliderImage/'.$sliderimageCName);
-            Image::make($sliderImage)->save( $sliderPath);
+            Image::make($sliderImage)->resize(636,852)->save( $sliderPath);
             $updateSlider->slider_image = $sliderimageCName;
         }
         $updateSlider->update();
