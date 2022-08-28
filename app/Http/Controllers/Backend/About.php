@@ -17,7 +17,8 @@ class About extends Controller
      */
     public function index()
     {
-        //
+        $aboutall = AboutModel::orderby('id','asc')->get();
+        return view('backend.pages.about.manageAbout',compact('aboutall'));
     }
 
     /**
