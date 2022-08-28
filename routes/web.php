@@ -44,6 +44,8 @@ Route::controller(DemoController::class)->group(function(){
         Route::get('add','App\Http\Controllers\Backend\About@create')->middleware(['auth','verified'])->name('about.add');
         Route::get('manage','App\Http\Controllers\Backend\About@index')->middleware(['auth','verified'])->name('about.manage');
         Route::post('store','App\Http\Controllers\Backend\About@store')->middleware(['auth','verified'])->name('insert.about');
+        Route::get('edit\{id}','App\Http\Controllers\Backend\About@edit')->middleware(['auth','verified'])->name('edit.about');
+        Route::post('update\{id}','App\Http\Controllers\Backend\About@update')->middleware(['auth','verified'])->name('update.about');
     });
 
 // Frontend

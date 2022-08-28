@@ -17,7 +17,7 @@ class About extends Controller
      */
     public function index()
     {
-        $aboutall = AboutModel::orderby('id','asc')->get();
+        $aboutall = AboutModel::orderby('id','desc')->get();
         return view('backend.pages.about.manageAbout',compact('aboutall'));
     }
 
@@ -84,7 +84,10 @@ class About extends Controller
      */
     public function edit($id)
     {
-        //
+        $id =\Crypt::decryptString($id);
+         $about = AboutModel::find($id);
+        return view('backend.pages.about.editAbout',compact('about'));
+
     }
 
     /**
