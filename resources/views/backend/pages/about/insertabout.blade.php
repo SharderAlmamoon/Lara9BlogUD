@@ -62,8 +62,8 @@
                          <div class="form-group">
                             <select name="status" class="form-control">
                                 <option value="">---Status---</option>
-                                <option value="1">Active</option>
-                                <option value="2">InActive</option>
+                                <option value="1" @if(old('status') == '1') selected @endif>Active</option>
+                                <option value="2" @if(old('status') == '2') selected @endif>InActive</option>
                             </select>
                          </div>
 
