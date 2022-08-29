@@ -136,6 +136,11 @@ class About extends Controller
      */
     public function destroy($id)
     {
-        //
+       $deleteAbout = AboutModel::find($id);
+        if(File::exists('backend/aboutImage/'.$deleteAbout->deleteAbout_image)){
+            File::delete('backend/aboutImage/'.$deleteAbout->about_image);
+        }
+       $deleteAbout->delete();
+       return back()->with('warning','SuccessFully About Deleted');
     }
 }
