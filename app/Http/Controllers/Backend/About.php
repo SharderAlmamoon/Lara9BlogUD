@@ -99,7 +99,33 @@ class About extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'short_title' => 'required',
+            'short_description' => 'required',
+            'long_description' => 'required',
+            'status' => 'required',
+        ]);
+
+        $about = AboutModel::find($id);
+        $about->title = $request->title;
+        $about->short_title = $request->short_title;
+        $about->short_description = $request->short_description;
+        $about->long_description = $request->long_description;
+        $about->status = $request->status;
+
+        if($request->about_image){
+            if(File::exists('backend/aboutImage/'.$about->about_image)){
+                File::delete('backend/aboutImage/'.$about->about_image);
+            }
+            $aboutImage = $request->File('about_image');
+            $aboutimageCName = hexdec(uniqid()).'.'.$aboutImage->getClientOriginalExtension();
+            $aboutImagePath = public_path('backend/aboutImage/'. $aboutimageCName);
+            Image::make($aboutImage)->resize(523,605)->save($aboutImagePath);
+            $about->about_image = $aboutimageCName;
+        }
+        $about->update();
+        return redirect()->route('about.manage')->with('info','Successfully About Updated'); 
     }
 
     /**

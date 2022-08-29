@@ -67,7 +67,7 @@
                             </select>
                          </div>
 
-                        <button class="btn btn-sm btn-primary" type="submit">Add About</button>
+                        <button class="btn btn-sm btn-primary" type="submit">Update About</button>
 
                        </form>
                     </div>
