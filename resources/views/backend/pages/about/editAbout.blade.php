@@ -10,13 +10,12 @@
             <a href="{{route('dashboard')}}" class="btn btn-sm btn-success">Dashboard</a> /
             <a href="{{route('about.manage')}}" class="btn btn-sm btn-success">About Manage</a> 
         </div>
-      </div>
+</div>
 
-      <div class="br-pagebody">
-        <div class="row row-sm">
+  <div class="br-pagebody">
+      <div class="row row-sm">
         <div class="col-md-8 offset-md-2">
                 <div class="card bg-white">
-
                     <div class="ml-2 mt-3">
                         @if(count($errors))
                          @foreach($errors->all() as $error)
@@ -72,10 +71,11 @@
                        </form>
                     </div>
                       
-              </div><!-- card -->
-            </div>
+                </div><!-- card -->
          </div>
       </div>
+  </div>
+
       <script>
          jQuery(document).ready(function(){
           jQuery('#image').change(function(e){

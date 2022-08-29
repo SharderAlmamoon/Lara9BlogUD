@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\AboutModel;
+use App\Models\Backend\GalleryImageAbout;
 use Illuminate\Http\Request;
 use Image;
 use File;
@@ -85,7 +86,7 @@ class About extends Controller
     public function edit($id)
     {
         $id =\Crypt::decryptString($id);
-         $about = AboutModel::find($id);
+        $about =  AboutModel::find($id);
         return view('backend.pages.about.editAbout',compact('about'));
 
     }
@@ -140,7 +141,51 @@ class About extends Controller
         if(File::exists('backend/aboutImage/'.$deleteAbout->deleteAbout_image)){
             File::delete('backend/aboutImage/'.$deleteAbout->about_image);
         }
+        $deleteGallery = GalleryImageAbout::where('about_code',$deleteAbout->id)->get();
+        foreach($deleteGallery as $deleteGa){
+            if(File::exists('backend/Aboutgallery/'.$deleteGa->gallery_about_image)){
+                File::delete('backend/Aboutgallery/'.$deleteGa->gallery_about_image);
+
+                $galleryidDelete = GalleryImageAbout::find($deleteGa->id);
+                $galleryidDelete->delete();
+            }
+        }
        $deleteAbout->delete();
        return back()->with('warning','SuccessFully About Deleted');
+    }   //end method
+
+
+
+
+    public function multiimagepage($id){
+        $allabout =  AboutModel::find($id);
+        $galleryImageAll = GalleryImageAbout::where('about_code',$allabout->id)->get();
+        return view('backend.pages.about.galleryImage',compact('allabout','galleryImageAll'));
+    }//end method
+
+    public function insertMultiImage(Request $request,$id){
+       if($request->gallery_about_image){
+         $aboutGalleryImage = $request->File('gallery_about_image');
+            foreach($aboutGalleryImage as $aboutGallery){
+            $filename = md5(rand(00000,99999).time()).'.'.$aboutGallery->getClientOriginalExtension();
+            $fileLocationpath = public_path('backend/Aboutgallery/'.$filename);
+            Image::make($aboutGallery)->save($fileLocationpath);
+
+            $galleryImage = new GalleryImageAbout();
+            $galleryImage->about_code = $request->about_code;
+            $galleryImage->gallery_about_image = $filename;
+            $galleryImage->save();
+         }
+         return redirect()->back()->with('success','Successfully About Image Done');
+       } 
+    }//end method
+
+    public function deletegalleryImage($id){
+        $gtalleryImageDelete = GalleryImageAbout::find($id);
+         if(File::exists('backend/Aboutgallery/'.$gtalleryImageDelete->gallery_about_image)){
+            File::delete('backend/Aboutgallery/'.$gtalleryImageDelete->gallery_about_image);
+         }
+         $gtalleryImageDelete->delete();
+         return redirect()->back()->with('warning','Successfully Delete');
     }
 }

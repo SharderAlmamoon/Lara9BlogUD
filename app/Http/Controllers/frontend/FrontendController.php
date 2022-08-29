@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\frontend\SliderBanner;
 use App\Models\Backend\AboutModel;
+use App\Models\Backend\GalleryImageAbout;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -18,7 +19,8 @@ class FrontendController extends Controller
     {
         $sliderFrontend = SliderBanner::orderby('id','asc')->get();
         $aboutAll = AboutModel::where('status',2)->get();
-        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll'));
+        $gallery = GalleryImageAbout::all();
+        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll','gallery'));
     }
 
     /**
@@ -28,7 +30,8 @@ class FrontendController extends Controller
      */
     public function about()
     {
-      
+        $aboutAll = AboutModel::where('status','2')->get();
+       return view('frontend.aboutFrontend',compact('aboutAll'));
     }
 
     /**

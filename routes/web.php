@@ -16,7 +16,7 @@ use App\Http\Controllers\Demo\SliderController;
 */
 // FOR FRONTEND
 
-Route::get('/','App\Http\Controllers\frontend\FrontendController@index');
+Route::get('/','App\Http\Controllers\frontend\FrontendController@index')->name('hompage');
 Route::get('aboutpage','App\Http\Controllers\frontend\FrontendController@about')->name('front.about');
 
 // for Backend
@@ -48,6 +48,9 @@ Route::controller(DemoController::class)->group(function(){
         Route::get('edit\{id}','App\Http\Controllers\Backend\About@edit')->middleware(['auth','verified'])->name('edit.about');
         Route::post('update\{id}','App\Http\Controllers\Backend\About@update')->middleware(['auth','verified'])->name('update.about');
         Route::get('delete\{id}','App\Http\Controllers\Backend\About@destroy')->middleware(['auth','verified'])->name('about.delete');
+        Route::get('multiimage\{id}','App\Http\Controllers\Backend\About@multiimagepage')->middleware(['auth','verified'])->name('about.multiimage');
+        Route::post('multiimageinsert\{id}','App\Http\Controllers\Backend\About@insertMultiImage')->middleware(['auth','verified'])->name('insert.gallerybout');
+        Route::get('deleteGalleryImage\{id}','App\Http\Controllers\Backend\About@deletegalleryImage')->middleware(['auth','verified'])->name('deletegalleryImage');
     });
 
 // Frontend

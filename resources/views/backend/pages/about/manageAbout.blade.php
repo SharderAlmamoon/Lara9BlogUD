@@ -50,7 +50,8 @@
                                     </td>
                                 <td>
                                     <a href="{{route('edit.about',Crypt::encryptString($about->id))}}" class="btn-sm btn-info btn"><i class="fa fa-edit"></i></a>
-                                    <a href="{{route('about.delete',$about->id)}}" onclick="return(confirm('asre You sure Want to Delete'))" class="btn-sm btn-danger btn"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('about.delete',$about->id)}}" id="delete" class="btn-sm btn-danger btn"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('about.multiimage',$about->id)}}" class="btn-sm btn-dark btn"><i class="fa fa-plus"></i></a>
                                 </td>
                             </tr>
                             @php $serial++ @endphp

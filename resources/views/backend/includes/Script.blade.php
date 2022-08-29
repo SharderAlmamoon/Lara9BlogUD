@@ -17,7 +17,9 @@
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
     <script src="{{ asset('backend/lib/gmaps/gmaps.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <script src="{{ asset('backend/js/code.js')}}"></script>
     <script src="{{ asset('backend/js/bracket.js')}}"></script>
     <script src="{{ asset('backend/js/map.shiftworker.js')}}"></script>
     <script src="{{ asset('backend/js/ResizeSensor.js')}}"></script>
