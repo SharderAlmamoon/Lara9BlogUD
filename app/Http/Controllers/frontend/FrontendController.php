@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\frontend\SliderBanner;
+use App\Models\Backend\AboutModel;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -16,7 +17,8 @@ class FrontendController extends Controller
     public function index()
     {
         $sliderFrontend = SliderBanner::orderby('id','asc')->get();
-        return view('frontend.frontendDashboard',compact('sliderFrontend'));
+        $aboutAll = AboutModel::where('status',2)->get();
+        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll'));
     }
 
     /**
@@ -24,9 +26,9 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function about()
     {
-        //
+      
     }
 
     /**

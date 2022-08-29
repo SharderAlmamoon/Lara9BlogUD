@@ -17,6 +17,7 @@ use App\Http\Controllers\Demo\SliderController;
 // FOR FRONTEND
 
 Route::get('/','App\Http\Controllers\frontend\FrontendController@index');
+Route::get('aboutpage','App\Http\Controllers\frontend\FrontendController@about')->name('front.about');
 
 // for Backend
 
