@@ -68,7 +68,7 @@ class PortfolioController extends Controller
            $portfolio->portfolio_image =$portfolioimageCName;
         }
         $portfolio->save();
-        return redirect()->route('manage.portfolio');
+        return redirect()->route('manage.portfolio')->with('success','successfully Stored');
     }
 
     /**
@@ -103,7 +103,36 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'portfolio_category'=> 'required',
+            'portfolio_title' => 'required',
+            'portfolio_longdescription' => 'required',
+            'status' => 'required',
+        ],[
+            'portfolio_category.required' => 'CATEGORY FIELD IS REQUIRED',
+            'portfolio_title.required' => 'TITLE FIELD IS REQUIRED',
+            'portfolio_longdescription.required' => 'DESCRIPTION FIELD IS REQUIRED',
+            'status.required' => 'STATUS FIELD IS REQUIRED',
+        ]);
+        
+       $portfolio = Portfolio::find($id);
+       $portfolio->portfolio_category = $request->portfolio_category;
+       $portfolio->portfolio_title = $request->portfolio_title;
+       $portfolio->portfolio_longdescription = $request->portfolio_longdescription;
+       $portfolio->status = $request->status;
+
+        if($request->portfolio_image){
+            if(File::exists('backend/portfolioImage/'.$portfolio->portfolio_image)){
+                File::delete('backend/portfolioImage/'.$portfolio->portfolio_image);
+            }
+           $portfolioImage = $request->File('portfolio_image');
+           $portfolioimageCName = hexdec(uniqid()).'.'. $portfolioImage->getClientOriginalExtension();
+           $portfolioImagePath = public_path('backend/portfolioImage/'.$portfolioimageCName);
+            Image::make( $portfolioImage)->resize(1020,519)->save( $portfolioImagePath);
+           $portfolio->portfolio_image =$portfolioimageCName;
+        }
+        $portfolio->update();
+        return redirect()->route('manage.portfolio')->with('info','successfully Updated');
     }
 
     /**
