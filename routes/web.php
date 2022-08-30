@@ -61,8 +61,9 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('potfolio/add','create')->middleware(['auth','verified'])->name('add.portfolio');
     Route::get('potfolio/manage','index')->middleware(['auth','verified'])->name('manage.portfolio');
     Route::post('potfolio/insert','store')->middleware(['auth','verified'])->name('portfolio.insert');
-    Route::get('potfolio/edit','edit')->middleware(['auth','verified'])->name('edit.portfolio');
-    Route::get('potfolio/delete','destroy')->middleware(['auth','verified'])->name('delete.portfolio');
+    Route::get('potfolio/edit/{id}','edit')->middleware(['auth','verified'])->name('edit.portfolio');
+    Route::get('potfolio/update/{id}','update')->middleware(['auth','verified'])->name('portfolio.update');
+    Route::get('potfolio/delete/{id}','destroy')->middleware(['auth','verified'])->name('delete.portfolio');
   });
 
 Route::get('/dashboard', function () {

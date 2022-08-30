@@ -90,7 +90,8 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return view('backend.pages.portfolio.portfolioedit',compact('portfolio'));
     }
 
     /**

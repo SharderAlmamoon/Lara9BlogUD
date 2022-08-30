@@ -8,7 +8,7 @@
         </div>
         <div class="text-right">
             <a href="{{route('dashboard')}}" class="btn btn-sm btn-success">Dashboard</a> /
-            <a href="{{route('about.add')}}" class="btn btn-sm btn-success">About add</a> 
+            <a href="{{route('add.portfolio')}}" class="btn btn-sm btn-success">add Portfolio</a> 
         </div>
 </div>
 
@@ -36,7 +36,13 @@
                     <img height="100" src="{{asset('backend/portfolioImage/'.$portfolio->portfolio_image)}}" alt="">
                   </td>
                   <td>{!! $portfolio->portfolio_longdescription !!}</td>
-                  <td>{{$portfolio->status}}</td>
+                  <td>
+                      @if($portfolio->status == 1)
+                      <span class="badge badge-success">Active</span> 
+                      @else 
+                      <span class="badge badge-warning">Inactive</span> 
+                      @endif
+                    </td>
                   <td>
                     <a href="{{route('edit.portfolio',$portfolio->id)}}" class="btn btn-sm btn warning"><i class="fa fa-edit"></i></a>
                     <a href="{{route('delete.portfolio',$portfolio->id)}}" class="btn btn-sm btn danger"><i class="fa fa-trash"></i></a>
