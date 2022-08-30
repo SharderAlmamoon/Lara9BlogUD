@@ -17,7 +17,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $allportfolio = Portfolio::latest()->get();
+        return view('backend.pages.portfolio.portfoliomanage',compact('allportfolio'));
+        
     }
 
     /**

@@ -6,6 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{ asset('backend/css/bracket.css')}}">
+    <!-- DATATABVLE -->
+    <link rel="stylesheet" href="{{ asset('backend/lib/datatables.net-dt/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css')}}">
     <!-- TOASTER -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">

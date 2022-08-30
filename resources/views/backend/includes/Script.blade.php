@@ -14,6 +14,12 @@
     <script src="{{ asset('backend/lib/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{ asset('backend/lib/echarts/echarts.min.js')}}"></script>
     <script src="{{ asset('backend/lib/select2/js/select2.full.min.js')}}"></script>
+    <!-- DATA TABLE -->
+    <script src="{{ asset('backend/lib/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('backend/lib/datatables.net-dt/js/dataTables.dataTables.min.js')}}"></script>
+    <script src="{{ asset('backend/lib/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset('backend/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js')}}"></script>
+    <!-- END DATA TABLE -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
     <script src="{{ asset('backend/lib/gmaps/gmaps.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -29,6 +35,20 @@
       $('#summernote').summernote();
        });
     </script>
+    <!-- dataTable -->
+    <script>
+      $(document).ready(function(){
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+      });
+    </script>
+    <!-- dataTable End -->
     <script>
       $(function(){
         'use strict'
