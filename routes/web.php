@@ -60,7 +60,7 @@ Route::controller(DemoController::class)->group(function(){
   Route::controller(PortfolioController::class)->group(function(){
     Route::get('potfolio/add','create')->middleware(['auth','verified'])->name('add.portfolio');
     Route::get('potfolio/manage','index')->middleware(['auth','verified'])->name('manage.portfolio');
-    Route::get('potfolio/insert','store')->middleware(['auth','verified'])->name('portfolio.insert');
+    Route::post('potfolio/insert','store')->middleware(['auth','verified'])->name('portfolio.insert');
   });
 
 Route::get('/dashboard', function () {
