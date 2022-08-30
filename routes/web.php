@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Demo\SliderController;
+use App\Http\Controllers\Backend\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('aboutpage','App\Http\Controllers\frontend\FrontendController@about')
 
 // for Backend
 
+// PROFILEPAGE
 Route::controller(DemoController::class)->group(function(){
     Route::get('/about','index')->name('abouttttt.about')->middleware('check');
     Route::get('/contact','indexconTact')->middleware(['auth','verified'])->name('about.contact');
@@ -32,6 +34,7 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('/admin/updateuserPasswordchange','updateuserPasswordchange')->middleware(['auth','verified'])->name('updateuserPasswordchange');
 });
 
+    // SLIDER
     Route::group(['prefix'=>'/slider'],function(){
         Route::get('/add',[SliderController::class,'index'])->middleware(['auth','verified'])->name('slider.add');
         Route::get('/manage',[SliderController::class,'manage'])->middleware(['auth','verified'])->name('slider.manage');
@@ -40,7 +43,7 @@ Route::controller(DemoController::class)->group(function(){
         Route::get('/delete/{id}',[SliderController::class,'destroy'])->middleware(['auth','verified'])->name('slider.delete');
         Route::post('/update/{id}',[SliderController::class,'update'])->middleware(['auth','verified'])->name('update.slider');
     });
-
+    // ABOUT
     Route::group(['prefix'=>'about'],function(){
         Route::get('add','App\Http\Controllers\Backend\About@create')->middleware(['auth','verified'])->name('about.add');
         Route::get('manage','App\Http\Controllers\Backend\About@index')->middleware(['auth','verified'])->name('about.manage');
@@ -52,8 +55,13 @@ Route::controller(DemoController::class)->group(function(){
         Route::post('multiimageinsert\{id}','App\Http\Controllers\Backend\About@insertMultiImage')->middleware(['auth','verified'])->name('insert.gallerybout');
         Route::get('deleteGalleryImage\{id}','App\Http\Controllers\Backend\About@deletegalleryImage')->middleware(['auth','verified'])->name('deletegalleryImage');
     });
+    // PORTFOLIO 
 
-// Frontend
+  Route::controller(PortfolioController::class)->group(function(){
+    Route::get('potfolio/add','create')->middleware(['auth','verified'])->name('add.portfolio');
+    Route::get('potfolio/manage','index')->middleware(['auth','verified'])->name('manage.portfolio');
+    Route::get('potfolio/insert','store')->middleware(['auth','verified'])->name('portfolio.insert');
+  });
 
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');
