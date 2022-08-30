@@ -143,6 +143,12 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delteportfolio = Portfolio::find($id);
+        if(File::exists('backend/portfolioImage/'.$delteportfolio->portfolio_image)){
+            File::delete('backend/portfolioImage/'.$delteportfolio->portfolio_image);
+        }
+        $delteportfolio->delete();
+        return redirect()->route('manage.portfolio')->with('warning','successfully Deleted');
+
     }
 }
