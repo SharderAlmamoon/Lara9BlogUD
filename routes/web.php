@@ -19,6 +19,8 @@ use App\Http\Controllers\Backend\PortfolioController;
 
 Route::get('/','App\Http\Controllers\frontend\FrontendController@index')->name('hompage');
 Route::get('aboutpage','App\Http\Controllers\frontend\FrontendController@about')->name('front.about');
+Route::get('potfolio/details/{id}','App\Http\Controllers\frontend\FrontendController@details')->name('portfolio.details');
+Route::get('potfolio/details/','App\Http\Controllers\frontend\FrontendController@portfoliodetails')->name('portfolio.detailss');
 
 // for Backend
 
@@ -65,7 +67,6 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('potfolio/update/{id}','update')->middleware(['auth','verified'])->name('portfolio.update');
     Route::get('potfolio/delete/{id}','destroy')->middleware(['auth','verified'])->name('delete.portfolio');
   });
-
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');
 })->middleware(['auth','verified'])->name('dashboard');

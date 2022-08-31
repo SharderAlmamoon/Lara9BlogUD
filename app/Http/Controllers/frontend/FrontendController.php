@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\frontend\SliderBanner;
 use App\Models\Backend\AboutModel;
 use App\Models\Backend\GalleryImageAbout;
+use App\Models\Backend\Portfolio;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -20,7 +21,8 @@ class FrontendController extends Controller
         $sliderFrontend = SliderBanner::orderby('id','asc')->get();
         $aboutAll = AboutModel::where('status',2)->get();
         $gallery = GalleryImageAbout::all();
-        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll','gallery'));
+        $portfolio = Portfolio::all();
+        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll','gallery','portfolio'));
     }
 
     /**
@@ -40,9 +42,10 @@ class FrontendController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function details($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return view('frontend.portfolioFrontend',compact('portfolio'));
     }
 
     /**
@@ -51,9 +54,9 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function portfoliodetails()
     {
-        //
+        return view('frontend.frontentDashoboardportfolio');
     }
 
     /**

@@ -31,11 +31,11 @@
                             <label for="title"><b>Portfolio Category</b></label>
                             <select name="portfolio_category" id="" class="form-control ">
                                 <option value="">---category---</option>
-                                <option value="webdesign" @if(old('portfolio_category') == 'webdesign') selected @endif>WEB DESIGN</option>
-                                <option value="appsdesign" @if(old('portfolio_category') == 'webdesign') selected @endif>APPS DESIGN</option>
-                                <option value="graphicdesign" @if(old('portfolio_category') == 'graphicdesign') selected @endif>GRAPHIC DESIGN</option>
-                                <option value="webDevelopment" @if(old('portfolio_category') == 'webDevelopment') selected @endif>WEB DEVELOPMENT</option>
-                                <option value="uiuxdesign" @if(old('portfolio_category') == 'uiuxdesign') selected @endif>UI/UX DESIGN</option>
+                                <option value="WEB DESIGN" @if(old('portfolio_category') == 'webdesign') selected @endif>WEB DESIGN</option>
+                                <option value="APPS DESIGN" @if(old('portfolio_category') == 'webdesign') selected @endif>APPS DESIGN</option>
+                                <option value="GRAPHIC DESIGN" @if(old('portfolio_category') == 'graphicdesign') selected @endif>GRAPHIC DESIGN</option>
+                                <option value="WEB DEVELOPMENT" @if(old('portfolio_category') == 'webDevelopment') selected @endif>WEB DEVELOPMENT</option>
+                                <option value="UI/UX DESIGN" @if(old('portfolio_category') == 'uiuxdesign') selected @endif>UI/UX DESIGN</option>
                             </select>
                           </div>
 
