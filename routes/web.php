@@ -21,6 +21,7 @@ Route::get('/','App\Http\Controllers\frontend\FrontendController@index')->name('
 Route::get('aboutpage','App\Http\Controllers\frontend\FrontendController@about')->name('front.about');
 Route::get('potfolio/details/{id}','App\Http\Controllers\frontend\FrontendController@details')->name('portfolio.details');
 Route::get('potfolio/details/','App\Http\Controllers\frontend\FrontendController@portfoliodetails')->name('portfolio.detailss');
+Route::get('potfolio','App\Http\Controllers\frontend\FrontendController@homeportfolio')->name('portfolio.home');
 
 // for Backend
 

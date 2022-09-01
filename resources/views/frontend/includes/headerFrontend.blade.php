@@ -16,7 +16,7 @@
                                             <li><a href="services-details.html">Services</a></li>
                                             <li class="menu-item-has-children"><a href="#">Portfolio</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                                    <li><a href="{{route('portfolio.home')}}">Portfolio</a></li>
                                                     <li><a href="{{route('portfolio.detailss')}}">Portfolio Details</a></li>
                                                 </ul>
                                             </li>

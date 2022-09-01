@@ -66,9 +66,10 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function homeportfolio()
     {
-        //
+        $portfolio = Portfolio::all();
+        return view('frontend.homeportfolio',compact('portfolio'));
     }
 
     /**
