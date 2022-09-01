@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PostAuthor extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'post_author_name',
+        'post_author_status',
+    ];
 }

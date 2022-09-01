@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Demo\SliderController;
 use App\Http\Controllers\Backend\PortfolioController;
+use App\Http\Controllers\Backend\PostCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,14 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('potfolio/update/{id}','update')->middleware(['auth','verified'])->name('portfolio.update');
     Route::get('potfolio/delete/{id}','destroy')->middleware(['auth','verified'])->name('delete.portfolio');
   });
+  // Author Category
+  Route::group(['prefix'=>'category'],function(){
+    Route::get('/create',[PostCategoryController::class,'create'])->middleware(['auth','verified'])->name('create.category');
+    Route::post('/store',[PostCategoryController::class,'store'])->middleware(['auth','verified'])->name('store.category');
+    Route::get('/manage',[PostCategoryController::class,'index'])->middleware(['auth','verified'])->name('manage.category');
+  });
+
+
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');
 })->middleware(['auth','verified'])->name('dashboard');
