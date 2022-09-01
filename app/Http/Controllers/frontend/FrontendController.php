@@ -56,7 +56,8 @@ class FrontendController extends Controller
      */
     public function portfoliodetails()
     {
-        return view('frontend.frontentDashoboardportfolio');
+        $portfoliod = Portfolio::all();
+        return view('frontend.frontentDashoboardportfolio',compact('portfoliod'));
     }
 
     /**
