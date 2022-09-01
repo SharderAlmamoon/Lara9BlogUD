@@ -15,7 +15,8 @@ class PostCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $allcategory = PostCategory::latest()->get();
+        return view('backend.pages.authorCategory.manageCategory',compact('allcategory'));
     }
 
     /**
