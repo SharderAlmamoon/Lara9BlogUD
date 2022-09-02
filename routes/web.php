@@ -5,6 +5,7 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Demo\SliderController;
 use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\PostCategoryController;
+use App\Http\Controllers\Backend\PostAuthorControllerr;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,12 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/edit/{id}',[PostCategoryController::class,'edit'])->middleware(['auth','verified'])->name('edit.category');
     Route::get('/delete/{id}',[PostCategoryController::class,'destroy'])->middleware(['auth','verified'])->name('delete.category');
     Route::post('/update/{id}',[PostCategoryController::class,'update'])->middleware(['auth','verified'])->name('update.category');
+  });
+
+  //Author Name InserTed With Ajax
+
+  Route::group(['prefix' => 'author'],function(){
+    Route::get('manageauthor',[PostAuthorControllerr::class,'index'])->middleware(['auth','verified'])->name('manage.author');
   });
 
 
