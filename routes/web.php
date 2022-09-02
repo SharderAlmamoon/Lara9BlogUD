@@ -83,7 +83,12 @@ Route::controller(DemoController::class)->group(function(){
   //Author Name InserTed With Ajax
 
   Route::group(['prefix' => 'author'],function(){
-    Route::get('manageauthor',[PostAuthorControllerr::class,'index'])->middleware(['auth','verified'])->name('manage.author');
+    Route::get('/manageauthor',[PostAuthorControllerr::class,'index'])->middleware(['auth','verified'])->name('manage.author');
+    Route::post('/storeauthor',[PostAuthorControllerr::class,'store'])->middleware(['auth','verified']);
+    Route::get('/forshow',[PostAuthorControllerr::class,'show'])->middleware(['auth','verified']);
+    Route::get('/editShowFrom/{id}',[PostAuthorControllerr::class,'edit'])->middleware(['auth','verified']);
+    Route::post('/updateauthor/{id}',[PostAuthorControllerr::class,'update'])->middleware(['auth','verified']);
+    Route::get('/deleteauthor/{id}',[PostAuthorControllerr::class,'destroy'])->middleware(['auth','verified']);
   });
 
 

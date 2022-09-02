@@ -13,6 +13,7 @@
       </div>
 
       <div class="br-pagebody">
+        <div class="msg"></div>
         <div class="row">
             <!-- AUTHOR CREATE -->
 
@@ -20,22 +21,24 @@
                 <!-- Author Name -->
                 <div class="form-group">
                     <label for=""><b>Author Name : </b></label>
-                    <input type="text" class="form-control post_author_name" id="" placeholder="Enter Your Author Name">
+                    <input type="text" class="form-control post_author_name" id="post_author_name" placeholder="Enter Your Author Name">
                     <span class="text-danger AuthorNameError"></span>
                 </div>
             <!-- Author status -->
                 <div class="form-group">
                     <label for=""><b>Author Status : </b></label>
-                    <select name="post_author_status" class="form-control" id="">
+                    <select class="form-control post_author_status" id="post_author_status">
                         <option value="">----Author Status----</option>
                         <option value="1">Active</option>
                         <option value="2">Inactive</option>
                     </select>
-                    <span class="text-danger AuthorNameError"></span>
+                    <span class="text-danger AuthorStatusError"></span>
                 </div>
+                <input type="hidden" id="id">
                 <!-- Author Button -->
-                <div class="from-group">
-                    <button class="btn-sm btn btn-dark addButtonSubmit form-control">Add Author</button>
+                <div class="from-group buttonnnnn">
+                    <button type="submit" class="btn-sm btn btn-dark addButtonSubmit">Add Author</button>
+                    <button type="submit" class="btn-sm btn btn-info UpdateButton">Update Author</button>
                 </div>
         </div>
 
@@ -51,8 +54,8 @@
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody class="tbodyhereappend">
+                                <!-- <tr>
                                     <td>1</td>
                                     <td>ALMAMOON</td>
                                     <td>Active</td>
@@ -60,7 +63,7 @@
                                     <button class="btn btn-success btn-sm EditButton"><i class="fa fa-edit"></i></button>
                                     <button class="btn btn-danger btn-sm deleteButton"><i class="fa fa-trash"></i></button>
                                 </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                 </div><!-- card -->
