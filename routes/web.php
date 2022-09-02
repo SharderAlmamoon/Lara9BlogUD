@@ -74,6 +74,9 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/create',[PostCategoryController::class,'create'])->middleware(['auth','verified'])->name('create.category');
     Route::post('/store',[PostCategoryController::class,'store'])->middleware(['auth','verified'])->name('store.category');
     Route::get('/manage',[PostCategoryController::class,'index'])->middleware(['auth','verified'])->name('manage.category');
+    Route::get('/edit/{id}',[PostCategoryController::class,'edit'])->middleware(['auth','verified'])->name('edit.category');
+    Route::get('/delete/{id}',[PostCategoryController::class,'destroy'])->middleware(['auth','verified'])->name('delete.category');
+    Route::post('/update/{id}',[PostCategoryController::class,'update'])->middleware(['auth','verified'])->name('update.category');
   });
 
 

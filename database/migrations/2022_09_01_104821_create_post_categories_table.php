@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('post_category_name');
+            $table->string('post_category_name',100);
             $table->integer('post_category_status')->default(1)->comment("1 For Active 2 For Inactive");
             $table->timestamps();
         });

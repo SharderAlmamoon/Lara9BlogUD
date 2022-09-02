@@ -29,12 +29,12 @@
                             <label for="title"><b>Post Category</b></label>
                             <select name="post_category_name" id="" class="form-control ">
                                 <option value="">---Post category---</option>
-                                <option value="1" @if(old('post_category_name') == '1') selected @endif>Facebook</option>
-                                <option value="2" @if(old('post_category_name') == '2') selected @endif>Laravel</option>
-                                <option value="3" @if(old('post_category_name') == '3') selected @endif>Twitter</option>
-                                <option value="4" @if(old('post_category_name') == '4') selected @endif>Github</option>
-                                <option value="5" @if(old('post_category_name') == '5') selected @endif>Pinterest</option>
-                                <option value="6" @if(old('post_category_name') == '6') selected @endif>Reddit</option>
+                                <option value="Facebook" @if(old('post_category_name') == 'Facebook') selected @endif>Facebook</option>
+                                <option value="Laravel" @if(old('post_category_name') == 'Laravel') selected @endif>Laravel</option>
+                                <option value="Twitter" @if(old('post_category_name') == 'Twitter') selected @endif>Twitter</option>
+                                <option value="Github" @if(old('post_category_name') == 'Github') selected @endif>Github</option>
+                                <option value="Pinterest" @if(old('post_category_name') == 'Pinterest') selected @endif>Pinterest</option>
+                                <option value="Reddit" @if(old('post_category_name') == 'Reddit') selected @endif>Reddit</option>
                             </select>
                           </div>
                          <div class="form-group">

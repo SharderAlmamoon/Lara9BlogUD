@@ -39,8 +39,8 @@
                                      @endif
                                     </td>
                                 <td>
-                                    <a href="{{route('edit.about',Crypt::encryptString($category->id))}}" class="btn-sm btn-info btn"><i class="fa fa-edit"></i></a>
-                                    <a href="{{route('about.delete',$category->id)}}" id="delete" class="btn-sm btn-danger btn"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('edit.category',Crypt::encryptString($category->id))}}" class="btn-sm btn-info btn"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('delete.category',$category->id)}}" id="delete" class="btn-sm btn-danger btn"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @php $serial++ @endphp

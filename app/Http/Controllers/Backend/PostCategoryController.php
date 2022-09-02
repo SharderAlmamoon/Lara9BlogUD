@@ -48,7 +48,7 @@ class PostCategoryController extends Controller
         $categoryInsert->post_category_name = $request->post_category_name;
         $categoryInsert->post_category_status = $request->post_category_status;
         $categoryInsert->save();
-        return redirect()->route('manage.category')->with('success','Succesfully Category inserted');
+        return redirect()->route('manage.category')->with('message','Succesfully Category inserted');
     }
 
     /**
@@ -70,7 +70,9 @@ class PostCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = \Crypt::decryptString($id);
+        $category = PostCategory::find($id);
+        return view('backend.pages.authorCategory.editCategory',compact('category'));
     }
 
     /**
@@ -82,7 +84,18 @@ class PostCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'post_category_name' => 'required',
+            'post_category_status' => 'required',
+        ],[
+           'post_category_name.required' => 'NAME FIELD REQUIRED', 
+           'post_category_status.required' => 'Status FIELD REQUIRED', 
+        ]);
+        $categoryUpdate = PostCategory::find($id);
+        $categoryUpdate->post_category_name = $request->post_category_name;
+        $categoryUpdate->post_category_status = $request->post_category_status;
+        $categoryUpdate->update();
+        return redirect()->route('manage.category')->with('message','Succesfully Category Updated');
     }
 
     /**
@@ -93,6 +106,8 @@ class PostCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteCategory = PostCategory::find($id);
+        $deleteCategory->delete();
+        return redirect()->route('manage.category')->with('warning','successfully Delete');
     }
 }
