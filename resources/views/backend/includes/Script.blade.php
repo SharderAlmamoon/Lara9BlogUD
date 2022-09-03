@@ -26,6 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset('backend/js/code.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
     <script src="{{ asset('backend/js/author.js')}}"></script>
     <script src="{{ asset('backend/js/bracket.js')}}"></script>
     <script src="{{ asset('backend/js/map.shiftworker.js')}}"></script>

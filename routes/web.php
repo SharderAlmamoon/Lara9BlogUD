@@ -6,6 +6,7 @@ use App\Http\Controllers\Demo\SliderController;
 use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\PostAuthorControllerr;
+use App\Http\Controllers\Backend\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,12 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('/updateauthor/{id}',[PostAuthorControllerr::class,'update'])->middleware(['auth','verified']);
     Route::get('/deleteauthor/{id}',[PostAuthorControllerr::class,'destroy'])->middleware(['auth','verified']);
   });
-
+  // POST ALL
+  Route::controller(PostController::class)->group(function(){
+    Route::get('/post/create','create')->middleware(['auth','verified'])->name('post.create');
+    Route::get('/post/manage','index')->middleware(['auth','verified'])->name('manage.post');
+    Route::post('/post/store','store')->middleware(['auth','verified'])->name('post.store');
+  });
 
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');

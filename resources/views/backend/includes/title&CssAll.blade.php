@@ -13,3 +13,12 @@
     <!-- TOASTER -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
+    
+    <style type="text/css">
+    .bootstrap-tagsinput .tag{
+        margin-right: 2px;
+        color: #b70000;
+        font-weight: 700px;
+    } 
+</style>

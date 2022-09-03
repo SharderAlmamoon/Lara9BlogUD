@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('post_image');
             $table->string('post_category',150);
+            $table->string('post_author');
             $table->string('post_title');
             $table->text('post_long_description');
             $table->string('post_tags',150);
+            $table->integer('post_status')->default(1)->comment('1 For Active 2 For Inactive');
             $table->timestamps();
         });
     }

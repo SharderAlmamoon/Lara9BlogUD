@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\PostCategory;
+use App\Models\Backend\PostAuthor;
+use App\Models\Backend\Post;
+use File;
+use Image;
 
 class PostController extends Controller
 {
@@ -24,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $category = PostCategory::where('post_category_status',1)->get();
+        $author = PostAuthor::where('post_author_status',1)->get();
+        return view('backend.pages.post.postCreate',compact('category','author'));
     }
 
     /**
@@ -35,7 +42,41 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'post_category'=> 'required',
+            'post_author' => 'required',
+            'post_title' => 'required',
+            'post_long_description' => 'required',
+            'post_image' => 'required',
+            'post_tags' => 'required',
+            'post_status' => 'required',
+        ],[
+            'post_category.required' => 'CATEGORY FIELD IS REQUIRED',
+            'post_author.required' => 'AUTHOR FIELD IS REQUIRED',
+            'post_title.required' => 'TITLE FIELD IS REQUIRED',
+            'post_long_description.required' => 'LONGDESCRIPTION FIELD IS REQUIRED',
+            'post_image.required' => 'IMAGE FIELD IS REQUIRED',
+            'post_tags.required' => 'TAGS FIELD IS REQUIRED',
+            'post_status.required' => 'STATUS FIELD IS REQUIRED',
+        ]);
+        
+       $postStore = new Post();
+       $postStore->post_category = $request->post_category;
+       $postStore->post_author = $request->post_author;
+       $postStore->post_title = $request->post_title;
+       $postStore->post_long_description = $request->post_long_description;
+       $postStore->post_tags = $request->post_tags;
+       $postStore->post_status = $request->post_status;
+
+       if($request->post_image){
+         $postImage = $request->File('post_image');
+         $imagePostCustomName = rand(00000,99999).'.'.$postImage->getClientOriginalExtension();
+         $PosImagePath = public_path('backend/postImage/'.$imagePostCustomName);
+         Image::make($postImage)->save( $PosImagePath);
+         $postStore->post_image = $imagePostCustomName;
+       }
+       $postStore->save();
+       return redirect()->route('manage.post')->with('message','SUCCESSFULLY POST ADDED');
     }
 
     /**
