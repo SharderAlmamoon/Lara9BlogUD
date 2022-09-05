@@ -98,7 +98,7 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('/post/store','store')->middleware(['auth','verified'])->name('post.store');
     Route::get('/post/edit/{id}','edit')->middleware(['auth','verified'])->name('edit.post');
     Route::post('/post/update/{id}','update')->middleware(['auth','verified'])->name('update.post');
-    Route::get('/post/delete/{id}','delete')->middleware(['auth','verified'])->name('delete.post');
+    Route::get('/post/delete/{id}','destroy')->middleware(['auth','verified'])->name('delete.post');
   });
 
 Route::get('/dashboard', function () {

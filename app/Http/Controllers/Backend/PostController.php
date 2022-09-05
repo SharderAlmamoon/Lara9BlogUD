@@ -160,6 +160,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $singlePostDelete = Post::find($id);
+        if(File::exists('backend/postImage/'. $singlePostDelete->post_image)){
+            File::delete('backend/postImage/'. $singlePostDelete->post_image);
+        }
+        $singlePostDelete->delete();
+        return redirect()->route('manage.post')->with('warning','SUCCESSFULLY POST DELETED');
+
     }
 }
