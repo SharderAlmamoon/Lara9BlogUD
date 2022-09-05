@@ -7,6 +7,7 @@ use App\Models\frontend\SliderBanner;
 use App\Models\Backend\AboutModel;
 use App\Models\Backend\GalleryImageAbout;
 use App\Models\Backend\Portfolio;
+use App\Models\Backend\Post;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -22,7 +23,8 @@ class FrontendController extends Controller
         $aboutAll = AboutModel::where('status',2)->get();
         $gallery = GalleryImageAbout::all();
         $portfolio = Portfolio::all();
-        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll','gallery','portfolio'));
+        $allPost = Post::latest()->where('post_status',1)->limit(3)->get();
+        return view('frontend.frontendDashboard',compact('sliderFrontend','aboutAll','gallery','portfolio','allPost'));
     }
 
     /**

@@ -73,7 +73,7 @@ class PostController extends Controller
          $postImage = $request->File('post_image');
          $imagePostCustomName = rand(00000,99999).'.'.$postImage->getClientOriginalExtension();
          $PosImagePath = public_path('backend/postImage/'.$imagePostCustomName);
-         Image::make($postImage)->save( $PosImagePath);
+         Image::make($postImage)->resize(430,327)->save( $PosImagePath);
          $postStore->post_image = $imagePostCustomName;
         }
         $postStore->save();
@@ -145,7 +145,7 @@ class PostController extends Controller
          $postImage = $request->File('post_image');
          $imagePostCustomName = rand(00000,99999).'.'.$postImage->getClientOriginalExtension();
          $PosImagePath = public_path('backend/postImage/'.$imagePostCustomName);
-         Image::make($postImage)->save( $PosImagePath);
+         Image::make($postImage)->resize(430,327)->save( $PosImagePath);
          $postUpdate->post_image = $imagePostCustomName;
         }
         $postUpdate->update();
