@@ -22,7 +22,7 @@ class PostController extends Controller
         $allpost = Post::latest()->get();
         return view('backend.pages.post.postmanage',compact('allpost'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +34,7 @@ class PostController extends Controller
         $author = PostAuthor::where('post_author_status',1)->get();
         return view('backend.pages.post.postCreate',compact('category','author'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -68,16 +68,16 @@ class PostController extends Controller
        $postStore->post_long_description = $request->post_long_description;
        $postStore->post_tags = $request->post_tags;
        $postStore->post_status = $request->post_status;
-
+       
        if($request->post_image){
          $postImage = $request->File('post_image');
          $imagePostCustomName = rand(00000,99999).'.'.$postImage->getClientOriginalExtension();
          $PosImagePath = public_path('backend/postImage/'.$imagePostCustomName);
          Image::make($postImage)->save( $PosImagePath);
          $postStore->post_image = $imagePostCustomName;
-       }
-       $postStore->save();
-       return redirect()->route('manage.post')->with('message','SUCCESSFULLY POST ADDED');
+        }
+        $postStore->save();
+        return redirect()->route('manage.post')->with('message','SUCCESSFULLY POST ADDED');
     }
 
     /**
@@ -90,7 +90,7 @@ class PostController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,9 +99,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $singlePost = Post::find($id); 
+        $category = PostCategory::where('post_category_status',1)->get();
+        $author = PostAuthor::where('post_author_status',1)->get();
+        return view('backend.pages.post.postedit',compact('singlePost','category','author'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
