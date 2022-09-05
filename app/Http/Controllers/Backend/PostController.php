@@ -19,7 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $allpost = Post::latest()->get();
+        return view('backend.pages.post.postmanage',compact('allpost'));
     }
 
     /**

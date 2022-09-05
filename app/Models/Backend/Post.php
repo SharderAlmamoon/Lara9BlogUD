@@ -17,4 +17,10 @@ class Post extends Model
         'post_tags',
         'post_status',
     ];
+    public function authorName(){
+        return $this->belongsTo(PostAuthor::class,'post_author');
+    }
+    public function categoryName(){
+        return $this->belongsTo(PostCategory::class,'post_category');
+    }
 }
