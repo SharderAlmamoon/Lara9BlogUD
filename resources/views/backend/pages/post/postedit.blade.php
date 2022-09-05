@@ -77,8 +77,8 @@
                          <div class="form-group">
                             <select name="post_status" class="form-control">
                                 <option value="">---post_status---</option>
-                                <option value="1" @if(old('post_status') == '1') selected @endif>Active</option>
-                                <option value="2" @if(old('post_status') == '2') selected @endif>InActive</option>
+                                <option value="1" @if(old('post_status',$singlePost->post_status) == '1') selected @endif>Active</option>
+                                <option value="2" @if(old('post_status',$singlePost->post_status) == '2') selected @endif>InActive</option>
                             </select>
                          </div>
                         <button class="btn btn-sm btn-secondary" type="submit">Update Post</button>
