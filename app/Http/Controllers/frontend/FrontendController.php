@@ -7,6 +7,7 @@ use App\Models\frontend\SliderBanner;
 use App\Models\Backend\AboutModel;
 use App\Models\Backend\GalleryImageAbout;
 use App\Models\Backend\Portfolio;
+use App\Models\Backend\PostCategory;
 use App\Models\Backend\Post;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,13 @@ class FrontendController extends Controller
         $portfolio = Portfolio::find($id);
         return view('frontend.portfolioFrontend',compact('portfolio'));
     }
+    public function ReadmoreBlog($id)
+    {
+        $readmoreBlog = Post::find($id);
+        $recentBlog = Post::latest()->limit(5)->get();
+        $BlogCategories = PostCategory::orderby('post_category_name','desc')->get();
+        return view('frontend.readmoreBlog',compact('readmoreBlog','recentBlog','BlogCategories'));
+    }
 
     /**
      * Display the specified resource.
@@ -60,6 +68,12 @@ class FrontendController extends Controller
     {
         $portfoliod = Portfolio::all();
         return view('frontend.frontentDashoboardportfolio',compact('portfoliod'));
+    }
+    public function ourblog()
+    {
+        $OurBlog = Post::where('post_status',1)->limit(1)->get();
+        $RecenetPost = Post::latest()->limit(3)->get();
+        return view('frontend.frontendOurblogPage',compact('OurBlog','RecenetPost'));
     }
 
     /**
@@ -83,7 +97,7 @@ class FrontendController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
