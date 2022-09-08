@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\PostAuthorControllerr;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\FooterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,11 @@ Route::controller(DemoController::class)->group(function(){
     Route::post('/post/update/{id}','update')->middleware(['auth','verified'])->name('update.post');
     Route::get('/post/delete/{id}','destroy')->middleware(['auth','verified'])->name('delete.post');
   });
+  // FooTer For Frontend
+ Route::group(['prefix'=>'/footer'],function(){
+    Route::get('/create',[FooterController::class,'create'])->middleware(['auth','verified'])->name('footer.create');
+    Route::get('/manage',[FooterController::class,'index'])->middleware(['auth','verified'])->name('footer.manage');
+ });
 
 Route::get('/dashboard', function () {
 return view('backend.adminDashboard');
