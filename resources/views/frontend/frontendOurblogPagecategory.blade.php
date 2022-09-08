@@ -25,14 +25,13 @@
 
         <!-- main-area -->
         <main>
-
             <!-- breadcrumb-area -->
             <section class="breadcrumb__wrap">
                 <div class="container custom-container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8 col-md-10">
                             <div class="breadcrumb__wrap__content">
-                                <h2 class="title">{{Str::limit($readmoreBlog->post_title,30)}}</h2>
+                                <h3 class="title">{{$categoryName->post_category_name}}</h3>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{route('hompage')}}">Home</a></li>
@@ -56,7 +55,6 @@
             </section>
             <!-- breadcrumb-area-end -->
 
-
             <!-- blog-details-area -->
             <section class="standard__blog blog__details">
                 <div class="container">
@@ -64,28 +62,28 @@
                         <div class="col-lg-8">
                             <div class="standard__blog__post">
                                 <div class="standard__blog__thumb">
-                                    <img height="430px" width="850px" src="{{asset('backend/postImage/'.$readmoreBlog->post_image)}}" alt="">
-                                </div>
+                                    @foreach($OurBlog as $blog)
+                                    <img height="430px" width="850px" src="{{asset('backend/postImage/'.$blog->post_image)}}" alt="">
+                                </div>  
                                 <div class="blog__details__content services__details__content">
                                     <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i> {{$readmoreBlog->created_at->format('d/m/Y')}}</li>
+                                        <li><i class="fal fa-calendar-alt"></i> {{$blog->created_at->format('d/m/Y')}}</li>
                                         <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
                                         <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
                                     </ul>
-                                    <h2 class="title">{{$readmoreBlog->post_title}}</h2>
-
-                                    <p>{!! $readmoreBlog->post_long_description !!}</p>
-                                </div>
-                                <div class="blog__details__bottom">
+                                    <h2 class="title">{{$blog->post_title}}</h2>
+                                    <p>{!! $blog->post_long_description !!}</p>
+                                    <div class="blog__details__bottom">
                                     <ul class="blog__details__tag">
                                         <li class="title">Tag:</li>
                                         <li class="tags-list">
-                                            <a href="#">Business</a>
-                                            <a href="#">Design</a>
-                                            <a href="#">apps</a>
-                                            <a href="#">data</a>
+                                            <a href="#">{{$blog->post_tags}}</a>
                                         </li>
                                     </ul>
+                                 </div>
+                                 @endforeach
+                                </div>
+                                <div class="blog__details__bottom">
                                     <ul class="blog__details__social">
                                         <li class="title">Share :</li>
                                         <li class="social-icons">
@@ -96,6 +94,8 @@
                                         </li>
                                     </ul>
                                 </div>
+                               
+                                
                                 <div class="blog__next__prev">
                                     <div class="row justify-content-between">
                                         <div class="col-xl-5 col-md-6">
@@ -227,26 +227,28 @@
                             <aside class="blog__sidebar">
                                 <div class="widget">
                                     <h4 class="widget-title">Recent Blog</h4>
+                                    @foreach($RecenetPost as $recent)
                                     <ul class="rc__post">
-                                        @foreach($recentBlog as $recentBlog)
                                         <li class="rc__post__item">
                                             <div class="rc__post__thumb">
-                                                <a href="blog-details.html"><img src="{{asset('backend/postImage/'.$recentBlog->post_image)}}" alt=""></a>
+                                                <a href="blog-details.html"><img src="{{asset('backend/postImage/'.$recent->post_image)}}" alt=""></a>
                                             </div>
                                             <div class="rc__post__content">
-                                                <h5 class="title"><a href="{{Route('recent.blogtd',$recentBlog->id)}}">{{Str::limit($recentBlog->post_title,25)}}</a></h5>
-                                                <span class="post-date"><i class="fal fa-calendar-alt"></i> {{$recentBlog->created_at->diffForHumans()}}</span>
+                                                <h5 class="title"><a href="{{Route('recent.blogtd',$recent->id)}}">{{$recent->post_title}}</a></h5>
+                                                <span class="post-date"><i class="fal fa-calendar-alt"></i> {{$recent->created_at->diffForHumans()}}</span>
                                             </div>
                                         </li>
-                                        @endforeach
                                     </ul>
+                                @endforeach
                                 </div>
                                 <div class="widget">
                                     <h4 class="widget-title">Categories</h4>
                                     <ul class="sidebar__cat">
+
                                         @foreach($BlogCategories as $categories)
                                         <li class="sidebar__cat__item"><a href="{{route('category.posts',$categories->id)}}">{{ $categories->post_category_name }}</a></li>
                                         @endforeach
+                                        
                                     </ul>
                                 </div>
                                 <div class="widget">

@@ -32,7 +32,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8 col-md-10">
                             <div class="breadcrumb__wrap__content">
-                                <h2 class="title">{{Str::limit($readmoreBlog->post_title,30)}}</h2>
+                                <h2 class="title">{{Str::limit($readmoreBlogUp->post_title,30)}}</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{route('hompage')}}">Home</a></li>
@@ -64,26 +64,23 @@
                         <div class="col-lg-8">
                             <div class="standard__blog__post">
                                 <div class="standard__blog__thumb">
-                                    <img height="430px" width="850px" src="{{asset('backend/postImage/'.$readmoreBlog->post_image)}}" alt="">
+                                    <img height="430px" width="850px" src="{{asset('backend/postImage/'.$readmoreBlogUp->post_image)}}" alt="">
                                 </div>
                                 <div class="blog__details__content services__details__content">
                                     <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i> {{$readmoreBlog->created_at->format('d/m/Y')}}</li>
+                                        <li><i class="fal fa-calendar-alt"></i> {{$readmoreBlogUp->created_at->format('d/m/Y')}}</li>
                                         <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
                                         <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
                                     </ul>
-                                    <h2 class="title">{{$readmoreBlog->post_title}}</h2>
+                                    <h2 class="title">{{$readmoreBlogUp->post_title}}</h2>
 
-                                    <p>{!! $readmoreBlog->post_long_description !!}</p>
+                                    <p>{!! $readmoreBlogUp->post_long_description !!}</p>
                                 </div>
                                 <div class="blog__details__bottom">
                                     <ul class="blog__details__tag">
                                         <li class="title">Tag:</li>
                                         <li class="tags-list">
-                                            <a href="#">Business</a>
-                                            <a href="#">Design</a>
-                                            <a href="#">apps</a>
-                                            <a href="#">data</a>
+                                            <a href="#">{{$readmoreBlogUp->post_tags}}</a>
                                         </li>
                                     </ul>
                                     <ul class="blog__details__social">

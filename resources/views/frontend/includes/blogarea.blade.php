@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="blog__post__content">
                                     <span class="date">{{$post->created_at->diffForHumans()}}</span>
-                                    <h3 class="title"><a href="blog-details.html">{{$post->post_title}}</a></h3>
+                                    <h3 class="title"><a href="{{route('readmore.blog',$post->id)}}">{{$post->post_title}}</a></h3>
                                     <a href="{{route('readmore.blog',$post->id)}}" class="read__more">Read mORe</a>
                                 </div>
                             </div>
