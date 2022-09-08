@@ -24,7 +24,7 @@ class FooterController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.footer.createfooter');
     }
 
     /**

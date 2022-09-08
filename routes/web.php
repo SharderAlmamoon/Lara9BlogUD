@@ -109,6 +109,7 @@ Route::controller(DemoController::class)->group(function(){
  Route::group(['prefix'=>'/footer'],function(){
     Route::get('/create',[FooterController::class,'create'])->middleware(['auth','verified'])->name('footer.create');
     Route::get('/manage',[FooterController::class,'index'])->middleware(['auth','verified'])->name('footer.manage');
+    Route::post('/store',[FooterController::class,'store'])->middleware(['auth','verified'])->name('footer.insert');
  });
 
 Route::get('/dashboard', function () {
