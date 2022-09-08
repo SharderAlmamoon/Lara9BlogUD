@@ -27,13 +27,12 @@
         <main>
 
             <!-- breadcrumb-area -->
-            @foreach($OurBlog as $blog)
             <section class="breadcrumb__wrap">
                 <div class="container custom-container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8 col-md-10">
                             <div class="breadcrumb__wrap__content">
-                                <h2 class="title">{{$blog->post_title}}</h2>
+                                <h2 class="title">All BLOGS</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{route('hompage')}}">Home</a></li>
@@ -64,18 +63,21 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="standard__blog__post">
+                                
+                            @foreach($OurBlog as $blog) 
                                 <div class="standard__blog__thumb">
-                                    <img height="430px" width="850px" src="{{asset('backend/postImage/'.$blog->post_image)}}" alt="">
+                                    <img height="215px" width="425px" src="{{asset('backend/postImage/'.$blog->post_image)}}" alt="">
                                 </div>
                                 <div class="blog__details__content services__details__content">
                                     <ul class="blog__post__meta">
                                         <li><i class="fal fa-calendar-alt"></i> {{$blog->created_at->format('d/m/Y')}}</li>
+                                        <li><i class="fal fa-user-alt"></i>{{$blog->authorName->post_author_name}}</li>
                                         <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
                                         <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>
                                     </ul>
-                                    <h2 class="title">{{$blog->post_title}}</h2>
+                                    <h2 class="title">{{Str::limit($blog->post_title,45)}}</h2>
 
-                                    <p>{{$blog->post_long_description}}</p>
+                                    <p>{!! Str::limit($blog->post_long_description,200) !!}</p>
                                 </div>
                             @endforeach
                                 <div class="blog__details__bottom">
@@ -237,7 +239,7 @@
                                                 <a href="blog-details.html"><img src="{{asset('backend/postImage/'.$recent->post_image)}}" alt=""></a>
                                             </div>
                                             <div class="rc__post__content">
-                                                <h5 class="title"><a href="blog-details.html">{{$recent->post_title}}</a></h5>
+                                                <h5 class="title"><a href="{{Route('recent.blogtd',$recent->id)}}">{{$recent->post_title}}</a></h5>
                                                 <span class="post-date"><i class="fal fa-calendar-alt"></i> {{$recent->created_at->diffForHumans()}}</span>
                                             </div>
                                         </li>

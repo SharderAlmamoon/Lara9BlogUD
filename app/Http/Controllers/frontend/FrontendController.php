@@ -89,8 +89,8 @@ class FrontendController extends Controller
 
     public function ourblog()
     {
-        $OurBlog = Post::where('post_status',1)->limit(1)->get();
-        $RecenetPost = Post::latest()->limit(3)->get();
+        $OurBlog = Post::latest()->get();
+        $RecenetPost = Post::latest()->limit(5)->get();
         $BlogCategories = PostCategory::orderby('post_category_name','desc')->get();
         return view('frontend.frontendOurblogPage',compact('OurBlog','RecenetPost','BlogCategories'));
     }//END METHOD
