@@ -16,7 +16,8 @@ class FooterController extends Controller
      */
     public function index()
     {
-        //
+        $footers = Foter::all();
+        return view('backend.pages.footer.FooterManage',compact('footers'));
     }
 
     /**

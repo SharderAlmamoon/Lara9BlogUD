@@ -110,6 +110,8 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/create',[FooterController::class,'create'])->middleware(['auth','verified'])->name('footer.create');
     Route::get('/manage',[FooterController::class,'index'])->middleware(['auth','verified'])->name('footer.manage');
     Route::post('/store',[FooterController::class,'store'])->middleware(['auth','verified'])->name('footer.insert');
+    Route::post('/edit/{id}',[FooterController::class,'edit'])->middleware(['auth','verified'])->name('footer.edit');
+    Route::post('/delete/{id}',[FooterController::class,'destroy'])->middleware(['auth','verified'])->name('footer.delete');
  });
 
 Route::get('/dashboard', function () {
