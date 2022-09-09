@@ -96,7 +96,9 @@ class FooterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = \Crypt::decryptString($id);
+        $footer = Foter::find($id);
+        return view('backend.pages.footer.editFooter',compact('footer'));
     }
 
     /**
@@ -108,7 +110,46 @@ class FooterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'number' =>'required|numeric|min:14', 
+            'footer_short_description' =>'required', 
+            'address' =>'required', 
+            'email' =>'required', 
+            'facebook_link' =>'required', 
+            'twitter_link' =>'required', 
+            'linkedin_link' =>'required', 
+            'dribble_link' =>'required', 
+            'pinterest_link' =>'required', 
+            'copywrite_text' =>'required', 
+         ],[
+             'number.required' =>'Number Is Required', 
+            'footer_short_description.required' =>'Description Is required', 
+            'address.required' =>'Address is Required', 
+            'email.required' =>'Email Is Required', 
+            'facebook_link.required' =>'Facebook Is Required', 
+            'twitter_link.required' =>'Twitter Is Required', 
+            'linkedin_link.required' =>'Linkedin Required', 
+            'dribble_link.required' =>'Dribble Required', 
+            'pinterest_link.required' =>'Pinterest Required', 
+            'copywrite_text.required' =>'CopyWrite Text Required', 
+         ]);
+         
+         $footer = Foter::findOrFail($id);
+
+         $footer->update([
+             'number'=> $request->number,
+             'footer_short_description'=> $request->footer_short_description,
+             'address'=> $request->address,
+             'email'=> $request->email,
+             'facebook_link'=> $request->facebook_link,
+             'twitter_link'=> $request->twitter_link,
+             'linkedin_link'=> $request->linkedin_link,
+             'dribble_link'=> $request->dribble_link,
+             'pinterest_link'=> $request->pinterest_link,
+             'copywrite_text'=> $request->copywrite_text,
+             'created_at'=> Carbon::now()
+         ]);
+         return redirect()->route('footer.manage')->with('info','SuccessFully Footer Updated');
     }
 
     /**
