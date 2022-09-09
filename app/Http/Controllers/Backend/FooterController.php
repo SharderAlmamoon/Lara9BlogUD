@@ -133,7 +133,7 @@ class FooterController extends Controller
             'pinterest_link.required' =>'Pinterest Required', 
             'copywrite_text.required' =>'CopyWrite Text Required', 
          ]);
-         
+
          $footer = Foter::findOrFail($id);
 
          $footer->update([
@@ -160,6 +160,9 @@ class FooterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $footerSingle = Foter::find($id);
+        $footerSingle->delete();
+        return redirect()->route('footer.manage')->with('warning','SuccessFully Footer Deleted');
+
     }
 }
