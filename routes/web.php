@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\PostAuthorControllerr;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\FooterController;
+use App\Http\Controllers\Backend\ContactFromController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,11 @@ Route::controller(DemoController::class)->group(function(){
     Route::get('/edit/{id}',[FooterController::class,'edit'])->middleware(['auth','verified'])->name('footer.edit');
     Route::post('/update/{id}',[FooterController::class,'update'])->middleware(['auth','verified'])->name('footer.update');
     Route::get('/delete/{id}',[FooterController::class,'destroy'])->middleware(['auth','verified'])->name('footer.delete');
+ });
+  // Contact ForM 
+ Route::group(['prefix'=>'/contactFrom'],function(){
+    Route::get('/manage',[ContactFromController::class,'index'])->middleware(['auth','verified'])->name('manage.ContactForm');
+   
  });
 
 Route::get('/dashboard', function () {

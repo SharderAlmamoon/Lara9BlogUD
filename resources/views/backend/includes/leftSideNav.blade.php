@@ -87,6 +87,16 @@
             <li class="sub-item"><a href="{{route('footer.create')}}" class="sub-link">Add Footer</a></li>
           </ul>
         </li>
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <!-- <span class="menu-item-label">Cards &amp; Widgets</span> -->
+            <span class="menu-item-label">Contact From</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item"><a href="{{route('manage.ContactForm')}}" class="sub-link">Manage Contact</a></li>
+          </ul>
+        </li>
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
       </ul><!-- br-sideleft-menu -->
 
