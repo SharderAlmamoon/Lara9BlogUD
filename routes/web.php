@@ -118,6 +118,8 @@ Route::controller(DemoController::class)->group(function(){
   // Contact ForM 
  Route::group(['prefix'=>'/contactFrom'],function(){
     Route::get('/manage',[ContactFromController::class,'index'])->middleware(['auth','verified'])->name('manage.ContactForm');
+    Route::get('/delete/{id}',[ContactFromController::class,'destroy'])->middleware(['auth','verified'])->name('delete.contact');
+    Route::POST('/insert',[ContactFromController::class,'store'])->name('contact.insert');
    
  });
 
