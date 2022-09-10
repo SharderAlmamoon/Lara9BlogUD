@@ -36,4 +36,10 @@ class ContactFromController extends Controller
             $contactFrom->save();
             return back()->with('message','SUCCESSFULLY SENDING MESSAGE');
     } //End Method
+
+    public function destroy($id){
+        $deleteCOntact = ContactFrom::findOrFail($id);
+        $deleteCOntact->delete();
+        return back()->with('warning','Succeddfully Deleted');
+    } //end Method
 }
