@@ -32,6 +32,7 @@
     <script src="{{ asset('backend/js/map.shiftworker.js')}}"></script>
     <script src="{{ asset('backend/js/ResizeSensor.js')}}"></script>
     <script src="{{ asset('backend/js/dashboard.js')}}"></script>
+    <script src="{{ asset('backend/js/validate.min.js')}}"></script>
     <script>
       $(document).ready(function() {
       $('#summernote').summernote();

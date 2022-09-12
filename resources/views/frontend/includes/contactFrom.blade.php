@@ -16,15 +16,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                            <script>
-                                @if(count($errors) > 0)
-                                    @foreach($errors->all() as $error)
-                                        toastr.error("{{ $error }}");
-                                    @endforeach
-                                @endif
-                            </script>
+                                    @if(count($errors))
+                                        @foreach($errors->all() as $error)
+                                            <p class="alert alert-danger">{{ $error }}</p>
+                                        @endforeach
+                                    @endif
                                 <div class="homeContact__form">
-                                    <form action="{{route('contact.insert')}}" method="Post">
+                                    <form id="myForm" action="{{route('contact.insert')}}" method="Post">
                                         @csrf
                                         <input name="contact_name" value="{{old('contact_name')}}" type="text" placeholder="Enter name*">
                                         <input name="contact_email" value="{{old('contact_email')}}" type="email" placeholder="Enter mail*">

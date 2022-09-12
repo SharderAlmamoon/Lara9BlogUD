@@ -18,12 +18,7 @@
                 <div class="card bg-white">
 
                     <div class="ml-2 mt-3">
-                        @if(count($errors))
-                         @foreach($errors->all() as $error)
-                             <p class="alert alert-danger">{{$error}}</p>
-                          @endforeach
-                        @endif
-                       <form action="{{route('insert.slider')}}" method="post" enctype="multipart/form-data">
+                       <form action="{{route('insert.slider')}}" id="myForm" method="post" enctype="multipart/form-data">
                           @csrf
 
                         <!--slider_title -->
@@ -73,5 +68,50 @@
             
           });
          });
+      </script>
+      <script type="text/javascript">
+          $(document).ready(function(){
+            $('#myForm').validate({
+              rules:{
+                slider_title:{
+                  required:true,
+                },
+                slider_shortdes:{
+                  required:true,
+                },
+                slider_url:{
+                  required:true,
+                },
+                slider_image:{
+                  required:true,
+                },
+              },
+              messages:{
+                slider_title:{
+                  required:'PLEASE ENTER SLIDER TITLE',
+                },
+                slider_shortdes:{
+                  required:'PLEASE ENTER SLIDER SHORTDESCRIPTION',
+                },
+                slider_url:{
+                  required:'PLEASE ENTER SLIDER URL',
+                },
+                slider_image:{
+                  required:'PLEASE ENTER SLIDER IMAGE',
+                },
+              },
+              errorElement:'span',
+              errorPlacement:function(error,element){
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+              },
+              highlight:function(element,errorClass,validClass){
+                $(element).addClass('is-invalid');
+              },
+              unhighlight:function(element,errorClass,validClass){
+                $(element).removeClass('is-invalid');
+              },
+            });
+          });
       </script>
 @endsection   

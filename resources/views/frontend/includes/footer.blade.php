@@ -1,7 +1,7 @@
 <footer class="footer">
             <div class="container">
                 <div class="row justify-content-between">
-                    @foreach($footer as $foot)
+                    @foreach($footerr as $foot)
                     <div class="col-lg-4">
                         <div class="footer__widget">
                             <div class="fw-title">

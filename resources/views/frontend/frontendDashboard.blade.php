@@ -1,5 +1,7 @@
 @extends('frontend.frontendMaster.masterFrontend')
-
+@section('title')
+ Almamoon | dashboard
+@endsection
 @section('mainfunction')
     <main>
         <!-- banner-area -->
@@ -43,6 +45,5 @@
         <!-- contact-area -->
         @include('frontend.includes.contactFrom')
         <!-- contact-area-end -->
-
     </main>
 @endsection

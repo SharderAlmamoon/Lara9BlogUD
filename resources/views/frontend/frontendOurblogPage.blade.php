@@ -80,6 +80,28 @@
                                     <p>{!! Str::limit($blog->post_long_description,200) !!}</p>
                                 </div>
                             @endforeach
+
+
+
+
+                            <div class="pagination-wrap">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+
+
+
+
+
+
                                 <div class="blog__details__bottom">
                                     <ul class="blog__details__tag">
                                         <li class="title">Tag:</li>
@@ -316,11 +338,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="homeContact__form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Enter name*">
-                                        <input type="email" placeholder="Enter mail*">
-                                        <input type="number" placeholder="Enter number*">
-                                        <textarea name="message" placeholder="Enter Massage*"></textarea>
+                                <form id="myForm" action="{{route('contact.insert')}}" method="Post">
+                                        @csrf
+                                        <input class="errormessage" name="contact_name" value="{{old('contact_name')}}" type="text" placeholder="Enter name*">
+                                        <input class="errormessage" name="contact_email" value="{{old('contact_email')}}" type="email" placeholder="Enter mail*">
+                                        <input class="errormessage" name="contact_number" value="{{old('contact_number')}}" type="number" placeholder="Enter number*">
+                                        <textarea class="errormessage" name="contact_message" placeholder="Enter Massage*"> {{old('contact_message')}}</textarea>
                                         <button type="submit">Send Message</button>
                                     </form>
                                 </div>

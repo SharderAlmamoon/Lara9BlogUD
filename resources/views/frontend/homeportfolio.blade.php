@@ -187,13 +187,15 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="homeContact__form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Enter name*">
-                                        <input type="email" placeholder="Enter mail*">
-                                        <input type="number" placeholder="Enter number*">
-                                        <textarea name="message" placeholder="Enter Massage*"></textarea>
+                                <form id="myForm" action="{{route('contact.insert')}}" method="Post">
+                                        @csrf
+                                        <input name="contact_name" value="{{old('contact_name')}}" type="text" placeholder="Enter name*">
+                                        <input name="contact_email" value="{{old('contact_email')}}" type="email" placeholder="Enter mail*">
+                                        <input name="contact_number" value="{{old('contact_number')}}" type="number" placeholder="Enter number*">
+                                        <textarea name="contact_message" placeholder="Enter Massage*"> {{old('contact_message')}}</textarea>
                                         <button type="submit">Send Message</button>
                                     </form>
+                                    
                                 </div>
                             </div>
                         </div>

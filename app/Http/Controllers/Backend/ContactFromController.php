@@ -17,9 +17,9 @@ class ContactFromController extends Controller
 
     public function store(Request $request){
             $request->validate([
-                'contact_name'=>'required',
+                'contact_name'=>'required|regex:/^[a-zA-z]+$/u',
                 'contact_email'=>'required',
-                'contact_number'=>'required',
+                'contact_number'=>'required|max:15',
                 'contact_message'=>'required',
             ],[
                 'contact_name.required' => 'THE NAME FIELD REQUIRED',

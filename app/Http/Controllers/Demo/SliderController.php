@@ -20,12 +20,7 @@ class SliderController extends Controller
     } //End MEthod;
 
     public function store(Request $request){
-        $request->validate([
-            'slider_title' => 'required',
-            'slider_shortdes' => 'required',
-            'slider_image' => 'required',
-            'slider_url' => 'required',
-        ]);
+        
         $sliderinsert = new SliderBanner();
         $sliderinsert->slider_title = $request->slider_title;
         $sliderinsert->slider_shortdes = $request->slider_shortdes;
