@@ -84,17 +84,13 @@
 
 
 
-                            <div class="pagination-wrap">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
+        <div class="pagination-wrap">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {{$OurBlog->links('vendor.pagination.customPagination')}}
+                </ul>
+            </nav>
+        </div>
 
 
 
@@ -322,37 +318,8 @@
 
 
             <!-- contact-area -->
-            <section class="homeContact homeContact__style__two">
-                <div class="container">
-                    <div class="homeContact__wrap">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="section__title">
-                                    <span class="sub-title">07 - Say hello</span>
-                                    <h2 class="title">Any questions? Feel free <br> to contact</h2>
-                                </div>
-                                <div class="homeContact__content">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                    <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="homeContact__form">
-                                <form id="myForm" action="{{route('contact.insert')}}" method="Post">
-                                        @csrf
-                                        <input class="errormessage" name="contact_name" value="{{old('contact_name')}}" type="text" placeholder="Enter name*">
-                                        <input class="errormessage" name="contact_email" value="{{old('contact_email')}}" type="email" placeholder="Enter mail*">
-                                        <input class="errormessage" name="contact_number" value="{{old('contact_number')}}" type="number" placeholder="Enter number*">
-                                        <textarea class="errormessage" name="contact_message" placeholder="Enter Massage*"> {{old('contact_message')}}</textarea>
-                                        <button type="submit">Send Message</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- contact-area-end -->
+            @include('frontend.includes.contactFrom')
+           <!-- contact-area-end -->
 
         </main>
         <!-- main-area-end -->
