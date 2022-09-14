@@ -21,7 +21,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $footerr = Foter::all();
+        $footerr = Foter::orderby('id','asc')->get();
         $sliderFrontend = SliderBanner::orderby('id','asc')->get();
         $aboutAll = AboutModel::where('status',2)->get();
         $gallery = GalleryImageAbout::all();
