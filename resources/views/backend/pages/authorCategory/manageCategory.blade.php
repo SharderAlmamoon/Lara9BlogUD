@@ -10,7 +10,7 @@
             <a href="{{route('dashboard')}}" class="btn btn-sm btn-success">Dashboard</a> /
             <a href="{{route('create.category')}}" class="btn btn-sm btn-success">Create Category</a> 
         </div>
-      </div>
+  </div>
 
       <div class="br-pagebody">
         <div class="row">
@@ -26,10 +26,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php $serial=1 @endphp
-                            @foreach($allcategory as $category)
+                            @foreach($allcategory as $key=>$category)
                             <tr>
-                                <td>{{$serial}}</td>
+                                <td>{{$paginationSerial++}}</td>
                                 <td>{{$category->post_category_name}}</td>
                                 <td>
                                     @if($category->post_category_status == 1)
@@ -43,12 +42,15 @@
                                     <a href="{{route('delete.category',$category->id)}}" id="delete" class="btn-sm btn-danger btn"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
-                            @php $serial++ @endphp
                             @endforeach
                         </tbody>
                     </table>
               </div><!-- card -->
             </div>
          </div>
+         <div class="ht-80 d-flex align-items-center justify-content-end">
+            <!-- {{$allcategory->render()}} -->
+            {{$allcategory->links('vendor.pagination.backendpaginationCustom')}}
+            </div>
       </div>
 @endsection

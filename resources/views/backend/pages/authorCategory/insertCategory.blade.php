@@ -27,15 +27,7 @@
                         <!--POST CATEGORY -->
                         <div class="form-group">
                             <label for="title"><b>Post Category</b></label>
-                            <select name="post_category_name" id="" class="form-control ">
-                                <option value="">---Post category---</option>
-                                <option value="Facebook" @if(old('post_category_name') == 'Facebook') selected @endif>Facebook</option>
-                                <option value="Laravel" @if(old('post_category_name') == 'Laravel') selected @endif>Laravel</option>
-                                <option value="Twitter" @if(old('post_category_name') == 'Twitter') selected @endif>Twitter</option>
-                                <option value="Github" @if(old('post_category_name') == 'Github') selected @endif>Github</option>
-                                <option value="Pinterest" @if(old('post_category_name') == 'Pinterest') selected @endif>Pinterest</option>
-                                <option value="Reddit" @if(old('post_category_name') == 'Reddit') selected @endif>Reddit</option>
-                            </select>
+                            <input type="text" class="form-control" name="post_category_name" value="{{old('post_category_name')}}" placeholder="Enter Category Name">
                           </div>
                          <div class="form-group">
                          <label for="title"><b>Category Status</b></label>

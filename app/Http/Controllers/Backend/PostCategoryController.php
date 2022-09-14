@@ -15,10 +15,10 @@ class PostCategoryController extends Controller
      */
     public function index()
     {
-        $allcategory = PostCategory::latest()->get();
-        return view('backend.pages.authorCategory.manageCategory',compact('allcategory'));
-    }
-
+        $allcategory = PostCategory::latest()->paginate(3);
+        $paginationSerial = ($allcategory->currentPage() != 1) ?($allcategory->perPage()*($allcategory->currentPage()-1))+1 :1; 
+        return view('backend.pages.authorCategory.manageCategory',compact('allcategory','paginationSerial'));
+    } //EndMethod
     /**
      * Show the form for creating a new resource.
      *
